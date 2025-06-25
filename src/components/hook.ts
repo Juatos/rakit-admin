@@ -9,7 +9,7 @@ import { Icon } from "./icon/index"
 import { Modal } from "./modal/index"
 import { Provider } from "./provider/index"
 
-export function setupSmartUI(app: App) {
+export function setupComponent(app: App) {
   // 全局注册组件
   app.component("ra-button", Button)
   app.component("ra-card", Card)

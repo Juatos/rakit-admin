@@ -1,6 +1,6 @@
 import type { Component } from "vue"
 import { Splash as DefaultSPlash } from "$ra"
-import { setupSmartUI } from "$ra/components/hook"
+import { setupComponent } from "$ra/components/hook"
 import { setupHttp } from "$ra/http"
 import { setupRouter } from "$ra/router"
 import { setupStore } from "$ra/stores"
@@ -20,7 +20,7 @@ export function useSetup() {
     initRouter: setupRouter,
     initTheme: setupTheme,
     initStore: setupStore,
-    initSmartUI: setupSmartUI,
+    initComponent: setupComponent,
     initHttp: setupHttp,
   }
 }

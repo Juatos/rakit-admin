@@ -1,4 +1,4 @@
-export const SMART_ICONS = {
+export const RAKIT_ICONS = {
   "ra:user": "lucide:user-round", // 用户
   "ra:user-xmark": "lucide:user-round-x", // 用户x
   "ra:user-check": "lucide:user-round-check", // 用户check

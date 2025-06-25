@@ -1,11 +1,11 @@
 import { ANIMATE_ICONS } from "./consts/animate"
-import { SMART_ICONS } from "./consts/basic"
+import { RAKIT_ICONS } from "./consts/basic"
 
 class IconManager {
   private mappings: Map<string, string> = new Map()
 
   constructor() {
-    this.mapping(SMART_ICONS, false)
+    this.mapping(RAKIT_ICONS, false)
     this.mapping(ANIMATE_ICONS, false)
   }
 

@@ -12,7 +12,7 @@ import { useTheme } from "$ra/themes"
 import { createDiscreteApi } from "naive-ui"
 
 // 定义返回类型接口
-interface SmartContext {
+interface RakitContext {
   store: ReturnType<typeof useAdminStore>
   router: ReturnType<typeof useRakitRouter>["router"]
   theme: ReturnType<typeof useTheme>
@@ -28,7 +28,7 @@ interface SmartContext {
   crumbs: ReturnType<typeof useAdminStore>["crumbs"]
 }
 
-export function useRakit(): SmartContext {
+export function useRakit(): RakitContext {
   const store = useAdminStore()
   const { router, homePath } = useRakitRouter()
 
