@@ -1,0 +1,17 @@
+{
+  "extends": "@rakit/conf/tsconfig/library.json",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "$ra": ["./src"],
+      "$ra/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "./**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "name": "@rakit/admin",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "packageManager": "pnpm@10.12.2",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "description": "Vue 3 管理后台框架，提供完整的中后台解决方案",
+  "keywords": [
+    "vue3",
+    "admin",
+    "typescript",
+    "naive-ui",
+    "framework",
+    "backend-management"
+  ],
+  "homepage": "https://github.com/Juatos/rakit-admin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juatos/rakit-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Juatos/rakit-admin/issues"
+  },
+  "author": "juatos <juatos@proton.me>",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./dist/index.css": "./dist/index.css",
+    "./shims-vue.d.ts": "./dist/shims-vue.d.ts"
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "dist/shims-vue.d.ts"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "type-check": "vue-tsc --noEmit",
+    "clean": "rm -rf node_modules dist",
+    "preview": "vite preview",
+    "prepublishOnly": "pnpm run build && cp src/shims-vue.d.ts dist/"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "dependencies": {
+    "naive-ui": "^2.42.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0",
+    "pinia": "^3.0.0",
+    "@vueuse/core": "^13.0.0",
+    "alova": "^3.0.0",
+    "dayjs": "^1.11.0",
+    "radash": "^12.0.0"
+  },
+  "devDependencies": {
+    "@rakit/conf": "^1.0.0",
+    "@types/node": "^24.0.3",
+    "sass": "^1.89.2",
+    "typescript": "^5.8.3",
+    "vue-tsc": "^2.2.10"
+  }
+}
