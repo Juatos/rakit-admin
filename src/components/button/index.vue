@@ -1,5 +1,5 @@
 <script lang="ts" setup="">
-import type { ButtonProps } from "$ra"
+import type { ButtonProps } from "$kit"
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   icon: "",
@@ -11,9 +11,9 @@ const { icon, title, ...bind } = props
 </script>
 
 <template>
-  <n-button class="ra-button" v-bind="bind">
+  <n-button class="k-button" v-bind="bind">
     <template #icon>
-      <ra-icon :name="icon" size="16" />
+      <k-icon :name="icon" size="16" />
     </template>
     <template v-if="title">
       {{ title }}
@@ -23,7 +23,7 @@ const { icon, title, ...bind } = props
 </template>
 
 <style lang="scss">
-.ra-button.n-button .n-button__icon {
+.k-button.n-button .n-button__icon {
   margin-right: 2px !important;
 }
 </style>

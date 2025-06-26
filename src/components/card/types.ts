@@ -1,4 +1,4 @@
-export interface SmCardProps {
+export interface KCardProps {
   /** 是否显示加载中状态 */
   spin?: boolean
   /** 标题 */

@@ -1,4 +1,4 @@
-import type { ExtendedMenuItem, MenuList } from "$ra"
+import type { ExtendedMenuItem, MenuList } from "$kit"
 
 export function useMenus() {
   const isCollapsed = ref<boolean>(false)

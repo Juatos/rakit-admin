@@ -1,9 +1,9 @@
 {
   "name": "@rakit/admin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "type": "module",
-  "packageManager": "pnpm@10.12.2",
+  "packageManager": "pnpm@10.12.3",
   "engines": {
     "node": ">=20",
     "pnpm": ">=10"
@@ -59,20 +59,21 @@
     "access": "public"
   },
   "dependencies": {
-    "naive-ui": "^2.42.0"
+    "naive-ui": "^2.42.0",
+    "src": "link:src"
   },
   "peerDependencies": {
-    "vue": "^3.5.0",
-    "vue-router": "^4.5.0",
-    "pinia": "^3.0.0",
     "@vueuse/core": "^13.0.0",
     "alova": "^3.0.0",
     "dayjs": "^1.11.0",
-    "radash": "^12.0.0"
+    "pinia": "^3.0.0",
+    "radash": "^12.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@rakit/conf": "^1.0.0",
-    "@types/node": "^24.0.3",
+    "@types/node": "^24.0.4",
     "sass": "^1.89.2",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"

@@ -1,10 +1,10 @@
-import type { NavigationGuardReturn, RouteComponent, RouterGuard, RouterMode, SetupRouterOption } from "$ra"
+import type { NavigationGuardReturn, RouteComponent, RouterGuard, RouterMode, SetupRouterOption } from "$kit"
 import type {
   RouteLocationNormalized,
   RouteRecordRaw,
   RouterHistory,
 } from "vue-router"
-import { useLoadingBar, useRakit } from "$ra"
+import { useLoadingBar, useRakit } from "$kit"
 import { isArray } from "radash"
 import {
   createMemoryHistory,

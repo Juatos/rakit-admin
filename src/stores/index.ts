@@ -1,6 +1,6 @@
 import type { Pinia } from "pinia"
 import type { App } from "vue"
-import { useRakitRouter } from "$ra/router"
+import { useRakitRouter } from "$kit/router"
 import { useCrumbs } from "./use-crumbs"
 import { useMenus } from "./use-menus"
 import { useTabs } from "./use-tabs"

@@ -56,7 +56,7 @@ export interface DetailItem {
   show?: boolean | ((data: any) => boolean)
 }
 
-export interface SmDetailProps {
+export interface KDetailProps {
   /**
    * 详情项配置
    */

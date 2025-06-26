@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { DTableQueries, DTableQuery, DTableSearchForm } from "$ra"
+import type { DTableQueries, DTableQuery, DTableSearchForm } from "$kit"
 import { useElementSize } from "@vueuse/core"
 import { computed, onMounted, ref } from "vue"
 
@@ -213,7 +213,7 @@ function handleReset() {
 </script>
 
 <template>
-  <ra-card>
+  <k-card>
     <div ref="formContainer" class="w-full">
       <n-form inline label-placement="left" :show-feedback="false">
         <n-grid :cols="colCount" :x-gap="36" :y-gap="12">
@@ -334,12 +334,12 @@ function handleReset() {
                   <n-button v-if="shouldShowToggleButton" size="tiny" text @click="toggleCollapse">
                     {{ isCollapsed ? '更多' : '收起' }}
                     <template #icon>
-                      <ra-icon v-if="isCollapsed" name="ra:chevron-down" />
-                      <ra-icon v-else name="ra:chevron-up" />
+                      <k-icon v-if="isCollapsed" name="kit:chevron-down" />
+                      <k-icon v-else name="kit:chevron-up" />
                     </template>
                   </n-button>
-                  <ra-button ghost type="warning" icon="ra:trash" title="重置" @click="handleReset" />
-                  <ra-button type="primary" icon="ra:search" title="搜索" @click="handleSearch" />
+                  <k-button ghost type="warning" icon="kit:trash" title="重置" @click="handleReset" />
+                  <k-button type="primary" icon="kit:search" title="搜索" @click="handleSearch" />
                 </n-flex>
               </div>
             </template>
@@ -347,7 +347,7 @@ function handleReset() {
         </n-grid>
       </n-form>
     </div>
-  </ra-card>
+  </k-card>
 </template>
 
 <style scoped>

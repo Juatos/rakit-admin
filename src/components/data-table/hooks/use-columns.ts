@@ -9,9 +9,9 @@ import type {
   RenderLinkOption,
   RenderSelectOption,
   RenderTagOption,
-} from "$ra"
+} from "$kit"
 import type { VNodeChild } from "vue"
-import { Icon as SmIcon } from "$ra"
+import { Icon as KIcon } from "$kit"
 import dayjs from "dayjs"
 import { NA, NBadge, NImage, NSwitch, NTag } from "naive-ui"
 import { computed, h } from "vue"
@@ -151,7 +151,7 @@ function handleRender(type: CustomRender, value: any, _: any, column: DTableColu
     case "link":
       return renderLink(displayValue, column.props?.linkOptions)
     case "icon":
-      return h(SmIcon, { name: displayValue, ...column.props })
+      return h(KIcon, { name: displayValue, ...column.props })
     default:
       return h("span", { ...column.props }, displayValue)
   }

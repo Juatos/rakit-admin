@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Ref } from "vue"
-import { useRakit } from "$ra"
+import { useRakit } from "$kit"
 import { computed, inject, ref, watch } from "vue"
 
 const { tabs, router } = useRakit()

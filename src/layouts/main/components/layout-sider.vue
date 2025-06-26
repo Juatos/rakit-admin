@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { MenuOption } from "naive-ui"
-import { renderIcon, useRakit } from "$ra"
+import { renderIcon, useRakit } from "$kit"
 import { defineComponent, onMounted, ref, watch } from "vue"
 import { manager } from "../extension"
 
@@ -75,7 +75,7 @@ export default defineComponent({
       </template>
       <template v-else>
         <div class="flex items-center px-4 h-full">
-          <ra-icon name="logo" class="text-22px text-primary" />
+          <k-icon name="logo" class="text-22px text-primary" />
           <span v-show="!menus.isCollapsed" class="ml-2 text-16px font-bold">
             Logo
           </span>

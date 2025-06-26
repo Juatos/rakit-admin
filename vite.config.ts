@@ -6,7 +6,7 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      $ra: resolve(__dirname, "src"),
+      $kit: resolve(__dirname, "src"),
     },
   },
 

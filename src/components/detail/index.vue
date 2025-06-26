@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { SmDetailProps } from "$ra"
+import type { KDetailProps } from "$kit"
 import { useRender } from "./hooks"
 
-const props = withDefaults(defineProps<SmDetailProps>(), {
+const props = withDefaults(defineProps <KDetailProps>(), {
   column: 2,
   bordered: true,
   labelPlacement: "left",

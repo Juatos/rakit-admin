@@ -1,10 +1,10 @@
 import type { Component } from "vue"
-import { Splash as DefaultSPlash } from "$ra"
-import { setupComponent } from "$ra/components/hook"
-import { setupHttp } from "$ra/http"
-import { setupRouter } from "$ra/router"
-import { setupStore } from "$ra/stores"
-import { setupTheme } from "$ra/themes"
+import { Splash as DefaultSPlash } from "$kit"
+import { setupComponent } from "$kit/components/hook"
+import { setupHttp } from "$kit/http"
+import { setupRouter } from "$kit/router"
+import { setupStore } from "$kit/stores"
+import { setupTheme } from "$kit/themes"
 
 function setupSplash(component?: Component) {
   const app = createApp(component || DefaultSPlash)

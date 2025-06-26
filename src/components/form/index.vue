@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { FormInst, FormItem, FormItemValue, SmFormProps } from "./types"
+import type { FormInst, FormItem, FormItemValue, KFormProps } from "./types"
 
-const props = withDefaults(defineProps<SmFormProps>(), {
+const props = withDefaults(defineProps <KFormProps>(), {
   showLabel: true,
   showFeedback: true,
   labelPlacement: "left",
@@ -152,7 +152,7 @@ defineExpose<FormInst>({
 <template>
   <n-form
     ref="formRef"
-    class="ra-form py-2 px-4"
+    class="k-form py-2 px-4"
     :model="model"
     :label-placement="props.labelPlacement"
     :label-width="props.labelWidth"

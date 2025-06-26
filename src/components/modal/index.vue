@@ -24,8 +24,8 @@ const props = withDefaults(defineProps<ModalProps>(), {
 const emits = defineEmits<ModalFooterEmits>()
 
 const modalId = ref<string>("")
-const getLatestModalId = inject("ra-modal-getLastetModalId") as () => string
-const destoryModal = inject("ra-modal-destory") as (id: string) => void
+const getLatestModalId = inject("k-modal-getLastetModalId") as () => string
+const destoryModal = inject("k-modal-destory") as (id: string) => void
 
 const show = ref<boolean>(false)
 onMounted(() => {
@@ -93,21 +93,21 @@ defineExpose<ModalExpose>({
     :mask-closable="true"
     transform-origin="mouse"
     preset="card"
-    class="ra-modal"
+    class="k-modal"
     :class="[isFullscreen ? 'is-fullscreen' : 'is-adaptive']"
     :style="style"
   >
     <template #header-extra>
       <n-el tag="div" class="flex gap-2">
-        <ra-icon
+        <k-icon
           v-if="props.fullscreen"
-          :name="isFullscreen ? 'ra:screen-exit' : 'ra:screen-full'"
+          :name="isFullscreen ? 'kit:screen-exit' : 'kit:screen-full'"
           class="flex-center h-28px w-28px cursor-pointer hover:bg-[var(--hover-color)] rounded-full"
           :size="18"
           @click="toggleFullscreen"
         />
-        <ra-icon
-          name="ra:xmark"
+        <k-icon
+          name="kit:xmark"
           class="flex-center h-28px w-28px cursor-pointer hover:bg-[var(--hover-color)] rounded-full xmark-icon"
           :size="18"
           @click="handleClose"
@@ -138,7 +138,7 @@ defineExpose<ModalExpose>({
 </template>
 
 <style lang="scss">
-.ra-modal {
+.k-modal {
   &.is-adaptive {
     & > .n-card__content {
       max-height: 80vh;

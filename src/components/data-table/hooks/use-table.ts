@@ -1,4 +1,4 @@
-import type { DTableProps, DTableSearchFn, DTableSearchForm } from "$ra"
+import type { DTableProps, DTableSearchFn, DTableSearchForm } from "$kit"
 import type { PaginationProps } from "naive-ui"
 import { sleep } from "radash"
 import { computed, ref } from "vue"

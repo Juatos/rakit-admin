@@ -1,5 +1,5 @@
-import type { TabItem } from "$ra"
-import { useRakitRouter } from "$ra/router"
+import type { TabItem } from "$kit"
+import { useRakitRouter } from "$kit/router"
 
 export function useTabs() {
   const { homePath } = useRakitRouter()

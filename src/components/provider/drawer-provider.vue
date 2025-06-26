@@ -44,8 +44,8 @@ function destoryDrawer(id: string) {
   }
 }
 
-provide("ra-drawer-create", createDrawer)
-provide("ra-drawer-destory", destoryDrawer)
+provide("k-drawer-create", createDrawer)
+provide("k-drawer-destory", destoryDrawer)
 </script>
 
 <template>

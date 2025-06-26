@@ -9,9 +9,9 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <ra-card v-if="!isSimple" :spin="spin">
+  <k-card v-if="!isSimple" :spin="spin">
     <slot />
-  </ra-card>
+  </k-card>
   <div v-else class="min-h-500px">
     <n-spin :show="spin">
       <slot />

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { SmCardProps } from "$ra"
+import type { KCardProps } from "$kit"
 
-withDefaults(defineProps<SmCardProps>(), {
+withDefaults(defineProps <KCardProps>(), {
   spin: false,
   title: "",
   bordered: true,
@@ -14,7 +14,7 @@ withDefaults(defineProps<SmCardProps>(), {
 
 <template>
   <n-card
-    class="ra-card"
+    class="k-card"
     content-class="!p-4"
     :title="title"
     :bordered="bordered"

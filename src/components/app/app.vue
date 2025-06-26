@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useTheme } from "$ra/themes"
+import { useTheme } from "$kit/themes"
 import { darkTheme, dateZhCN, zhCN } from "naive-ui"
 
 const { isDark, overrides } = useTheme()
@@ -14,9 +14,9 @@ const { isDark, overrides } = useTheme()
     class="w-full h-full"
   >
     <n-el tag="div" class="h-full w-full">
-      <ra-provider>
+      <k-provider>
         <router-view />
-      </ra-provider>
+      </k-provider>
     </n-el>
   </n-config-provider>
 </template>

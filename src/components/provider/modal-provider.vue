@@ -37,9 +37,9 @@ function destoryModal(id: string) {
   }
 }
 
-provide("ra-modal-create", createModal)
-provide("ra-modal-destory", destoryModal)
-provide("ra-modal-getLastetModalId", getLastetModalId)
+provide("k-modal-create", createModal)
+provide("k-modal-destory", destoryModal)
+provide("k-modal-getLastetModalId", getLastetModalId)
 </script>
 
 <template>

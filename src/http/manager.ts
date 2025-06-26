@@ -1,4 +1,4 @@
-import type { SetupHttpOptions } from "$ra"
+import type { SetupHttpOptions } from "$kit"
 import type { Alova, AlovaGenerics } from "alova"
 import { createAlova } from "alova"
 import { useRequest } from "alova/client"

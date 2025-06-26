@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { DropdownOption } from "naive-ui"
-import { useRakit } from "$ra"
+import { useRakit } from "$kit"
 
 const { store, router, homePath, tabs } = useRakit()
 
@@ -225,7 +225,7 @@ function handleToggleFullscreen() {
                 class="flex-center w-4 h-4 ml-2 leading-4 text-center align-middle rounded-full opacity-80 hover:bg-#4d6bfe/30"
                 @click.stop="handleCloseTab(tab.key)"
               >
-                <ra-icon name="ra:xmark" size="14" class="xmark-icon" />
+                <k-icon name="kit:xmark" size="14" class="xmark-icon" />
               </span>
             </div>
             <svg v-if="tab.key === tabs.activeTab" width="10" height="10" class="absolute bottom-0 left-[-6px] color-[var(--primary-item-color-active)]">
@@ -249,15 +249,15 @@ function handleToggleFullscreen() {
           :on-select="handleDropdownSelect"
         >
           <div class="flex-center tool-item tab-dropdown-button">
-            <ra-icon name="ra:chevron-down" size="20" class="cursor-pointer" />
+            <k-icon name="kit:chevron-down" size="20" class="cursor-pointer" />
           </div>
         </n-dropdown>
         <div class="flex-center tool-item" @click="refreshRoute">
-          <ra-icon name="ra:refresh" size="18" class="cursor-pointer" />
+          <k-icon name="kit:refresh" size="18" class="cursor-pointer" />
         </div>
         <div class="flex-center tool-item" @click="handleToggleFullscreen">
-          <ra-icon
-            :name="isPartialFullscreen ? 'ra:screen-exit' : 'ra:screen-full'"
+          <k-icon
+            :name="isPartialFullscreen ? 'kit:screen-exit' : 'kit:screen-full'"
             size="20"
             class="cursor-pointer"
           />

@@ -133,7 +133,7 @@ export interface FormItem {
   [key: string]: any
 }
 
-export interface SmFormProps {
+export interface KFormProps {
   /**
    * 表单项配置
    */

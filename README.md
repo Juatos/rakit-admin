@@ -78,7 +78,7 @@ app.mount("#app")
 
 ```vue
 <script setup lang="ts">
-import { SmButton, SmDataTable, SmDetail } from "@rakit/admin"
+import { KButton, KDataTable, KDetail } from "@rakit/admin"
 
 // 组件配置...
 </script>
@@ -86,19 +86,19 @@ import { SmButton, SmDataTable, SmDetail } from "@rakit/admin"
 <template>
   <div>
     <!-- 数据表格 -->
-    <SmDataTable
+     <KDataTable
       :columns="columns"
       :data="data"
       :queries="queries"
     />
 
     <!-- 详情组件 -->
-    <SmDetail :items="detailItems" />
+     <KDetail :items="detailItems" />
 
     <!-- 按钮组件 -->
-    <SmButton type="primary">
+     <KButton type="primary">
       提交
-    </SmButton>
+     </KButton>
   </div>
 </template>
 ```
@@ -110,7 +110,7 @@ import { SmButton, SmDataTable, SmDetail } from "@rakit/admin"
 功能强大的数据表格组件，支持搜索、分页、排序等功能。
 
 ```vue
-<SmDataTable
+ <KDataTable
   :columns="columns"
   :data="data"
   :queries="queries"
@@ -123,7 +123,7 @@ import { SmButton, SmDataTable, SmDetail } from "@rakit/admin"
 用于展示详细信息的组件。
 
 ```vue
-<SmDetail :items="detailItems" />
+ <KDetail :items="detailItems" />
 ```
 
 ### 布局组件 (SmLayout)
@@ -131,9 +131,9 @@ import { SmButton, SmDataTable, SmDetail } from "@rakit/admin"
 提供完整的后台布局解决方案。
 
 ```vue
-<SmLayout>
+ <KLayout>
   <router-view />
-</SmLayout>
+ </KLayout>
 ```
 
 ## 类型定义
@@ -145,7 +145,7 @@ import type {
   ButtonProps,
   DTableProps,
   SetupOptions,
-  SmDetailProps
+  KDetailProps
 } from "@rakit/admin"
 ```
 
