@@ -17,5 +17,4 @@ withDefaults(defineProps<{
       <slot />
     </n-spin>
   </div>
-  </rk-card>
 </template>

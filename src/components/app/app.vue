@@ -17,7 +17,6 @@ const { isDark, overrides } = useTheme()
       <rk-provider>
         <router-view />
       </rk-provider>
-      </rk-provider>
     </n-el>
   </n-config-provider>
 </template>

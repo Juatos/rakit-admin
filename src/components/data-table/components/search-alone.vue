@@ -348,7 +348,6 @@ function handleReset() {
       </n-form>
     </div>
   </rk-card>
-  </rk-card>
 </template>
 
 <style scoped>
