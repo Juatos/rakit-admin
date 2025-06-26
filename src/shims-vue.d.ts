@@ -13,15 +13,15 @@ declare global {
 
 declare module "vue" {
   export interface GlobalComponents {
-    KCard: typeof import("@rakit/admin")["Card"]
-    KIcon: typeof import("@rakit/admin")["Icon"]
-    KButton: typeof import("@rakit/admin")["Button"]
-    KModal: typeof import("@rakit/admin")["Modal"]
-    KDrawer: typeof import("@rakit/admin")["Drawer"]
-    KForm: typeof import("@rakit/admin")["Form"]
-    KDataTable: typeof import("@rakit/admin")["DataTable"]
-    KDetail: typeof import("@rakit/admin")["Detail"]
-    KProvider: typeof import("@rakit/admin")["Provider"]
+    RkCard: typeof import("@rakit/admin")["Card"]
+    RkIcon: typeof import("@rakit/admin")["Icon"]
+    RkButton: typeof import("@rakit/admin")["Button"]
+    RkModal: typeof import("@rakit/admin")["Modal"]
+    RkDrawer: typeof import("@rakit/admin")["Drawer"]
+    RkForm: typeof import("@rakit/admin")["Form"]
+    RkDataTable: typeof import("@rakit/admin")["DataTable"]
+    RkDetail: typeof import("@rakit/admin")["Detail"]
+    RkProvider: typeof import("@rakit/admin")["Provider"]
   }
 }
 

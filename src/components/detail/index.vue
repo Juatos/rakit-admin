@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { KDetailProps } from "$kit"
+import type { KDetailProps } from "$rk"
 import { useRender } from "./hooks"
 
 const props = withDefaults(defineProps <KDetailProps>(), {

@@ -1,12 +1,12 @@
-import type { CrumbItem, MenuList } from "$kit"
-import { useRakitRouter } from "$kit/router"
+import type { CrumbItem, MenuList } from "$rk"
+import { useRakitRouter } from "$rk/router"
 
 export type CrumbList = CrumbItem[]
 export function useCrumbs() {
   const { homePath } = useRakitRouter()
 
   // 当前显示的面包屑
-  const model = ref<CrumbItem[]>([{ title: "首页", path: homePath, icon: "kit:home" }])
+  const model = ref<CrumbItem[]>([{ title: "首页", path: homePath, icon: "rk:home" }])
 
   // 面包屑映射缓存 (route => crumbs)
   const mapping = ref<Record<string, CrumbList>>({})
@@ -41,7 +41,7 @@ export function useCrumbs() {
   function findMenuPath(path: string, menuList: MenuList): CrumbItem[] {
     // 如果是首页，直接返回首页面包屑
     if (path === homePath) {
-      return [{ title: "首页", path: homePath, icon: "kit:home" }]
+      return [{ title: "首页", path: homePath, icon: "rk:home" }]
     }
 
     const result: CrumbItem[] = []

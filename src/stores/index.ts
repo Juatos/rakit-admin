@@ -1,6 +1,6 @@
 import type { Pinia } from "pinia"
 import type { App } from "vue"
-import { useRakitRouter } from "$kit/router"
+import { useRakitRouter } from "$rk/router"
 import { useCrumbs } from "./use-crumbs"
 import { useMenus } from "./use-menus"
 import { useTabs } from "./use-tabs"
@@ -74,8 +74,8 @@ export const adminStore = defineStore("rakit-admin", () => {
   function closeOtherTabs(key: string) {
     // 收集要删除的标签keys
     const keysToRemove = tabs.model.value
-      .filter(item => item.key !== key && item.key !== useRakitRouter().homePath)
-      .map(item => item.key)
+      .filter((item: any) => item.key !== key && item.key !== useRakitRouter().homePath)
+      .map((item: any) => item.key)
 
     tabs.closeOtherTabs(key)
 
@@ -90,8 +90,8 @@ export const adminStore = defineStore("rakit-admin", () => {
   function closeAllTabs() {
     // 收集要删除的标签keys
     const keysToRemove = tabs.model.value
-      .filter(item => item.closable)
-      .map(item => item.key)
+      .filter((item: any) => item.closable)
+      .map((item: any) => item.key)
 
     const { homePath } = useRakitRouter()
     // 关闭所有标签时，只更新状态，不触发路由跳转（由组件层处理）

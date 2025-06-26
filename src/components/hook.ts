@@ -11,13 +11,13 @@ import { Provider } from "./provider/index"
 
 export function setupComponent(app: App) {
   // 全局注册组件
-  app.component("k-button", Button)
-  app.component("k-card", Card)
-  app.component("k-data-table", DataTable)
-  app.component("k-detail", Detail)
-  app.component("k-form", Form)
-  app.component("k-icon", Icon)
-  app.component("k-modal", Modal)
-  app.component("k-drawer", Drawer)
-  app.component("k-provider", Provider)
+  app.component("rk-button", Button)
+  app.component("rk-card", Card)
+  app.component("rk-data-table", DataTable)
+  app.component("rk-detail", Detail)
+  app.component("rk-form", Form)
+  app.component("rk-icon", Icon)
+  app.component("rk-modal", Modal)
+  app.component("rk-drawer", Drawer)
+  app.component("rk-provider", Provider)
 }

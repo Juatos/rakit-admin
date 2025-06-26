@@ -86,19 +86,19 @@ import { KButton, KDataTable, KDetail } from "@rakit/admin"
 <template>
   <div>
     <!-- 数据表格 -->
-     <KDataTable
+    <KDataTable
       :columns="columns"
       :data="data"
       :queries="queries"
     />
 
     <!-- 详情组件 -->
-     <KDetail :items="detailItems" />
+    <KDetail :items="detailItems" />
 
     <!-- 按钮组件 -->
-     <KButton type="primary">
+    <KButton type="primary">
       提交
-     </KButton>
+    </KButton>
   </div>
 </template>
 ```
@@ -144,8 +144,8 @@ import { KButton, KDataTable, KDetail } from "@rakit/admin"
 import type {
   ButtonProps,
   DTableProps,
-  SetupOptions,
-  KDetailProps
+  KDetailProps,
+  SetupOptions
 } from "@rakit/admin"
 ```
 

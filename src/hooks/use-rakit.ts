@@ -1,14 +1,14 @@
-import type { DrawerInstance, ModalInstance } from "$kit/components/provider/hook"
+import type { DrawerInstance, ModalInstance } from "$rk/components/provider/hook"
 import type {
   DialogProviderInst,
   LoadingBarProviderInst,
   MessageProviderInst,
   NotificationProviderInst,
 } from "naive-ui"
-import { manager as http } from "$kit/http/manager"
-import { useRakitRouter } from "$kit/router"
-import { useAdminStore } from "$kit/stores"
-import { useTheme } from "$kit/themes"
+import { manager as http } from "$rk/http/manager"
+import { useRakitRouter } from "$rk/router"
+import { useAdminStore } from "$rk/stores"
+import { useTheme } from "$rk/themes"
 import { createDiscreteApi } from "naive-ui"
 
 // 定义返回类型接口

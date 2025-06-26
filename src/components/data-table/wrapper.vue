@@ -9,12 +9,13 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <k-card v-if="!isSimple" :spin="spin">
+  <rk-card v-if="!isSimple" :spin="spin">
     <slot />
-  </k-card>
+  </rk-card>
   <div v-else class="min-h-500px">
     <n-spin :show="spin">
       <slot />
     </n-spin>
   </div>
+  </rk-card>
 </template>

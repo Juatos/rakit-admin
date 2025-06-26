@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { IconProps } from "$kit"
-import { manager } from "$kit/components/icon/manager"
+import type { IconProps } from "$rk"
+import { manager } from "$rk/components/icon/manager"
 import { NIcon } from "naive-ui"
 import { computed, h, ref } from "vue"
 
@@ -47,13 +47,13 @@ const iconComponent = computed(() => {
     size: props.size,
     color: props.color,
     innerHTML: content.value,
-    class: "k-icon",
+    class: "rk-icon",
   })
 })
 </script>
 
 <template>
-  <component :is="iconComponent" v-if="content" class="k-icon" />
+  <component :is="iconComponent" v-if="content" class="rk-icon" />
 </template>
 
 <style>

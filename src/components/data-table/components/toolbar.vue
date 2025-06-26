@@ -143,7 +143,7 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
       <template v-for="(func, idx) in extras" :key="idx">
         <!-- 批量操作按钮 -->
         <template v-if="isBatchFunc(func)">
-          <k-button
+          <rk-button
             v-if="!func.show || func.show(selectedRows)"
             class="text-sm"
             :type="func.type || 'default'"
@@ -156,7 +156,7 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
 
         <!-- 普通功能按钮 -->
         <template v-else>
-          <k-button
+          <rk-button
             v-if="typeof func.show === 'function' ? func.show() : func.show !== false"
             class="text-sm"
             :type="func.type || 'default'"
@@ -175,7 +175,7 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
       <!-- 刷新按钮 -->
       <n-button quaternary circle class="text-base hover:bg-gray-100" title="刷新" @click="handleRefresh">
         <template #icon>
-          <k-icon name="kit:refresh" size="18" />
+          <rk-icon name="rk:refresh" size="18" />
         </template>
       </n-button>
 
@@ -183,7 +183,7 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
       <n-dropdown trigger="click" :options="densityOptions" @select="handleDensityChange">
         <n-button quaternary circle class="text-base hover:bg-gray-100" title="表格密度">
           <template #icon>
-            <k-icon name="kit:column-density" size="20" />
+            <rk-icon name="rk:column-density" size="20" />
           </template>
         </n-button>
       </n-dropdown>
@@ -200,7 +200,7 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
         <template #trigger>
           <n-button quaternary circle class="text-base hover:bg-gray-100" title="列设置">
             <template #icon>
-              <k-icon name="kit:column-todo" size="20" />
+              <rk-icon name="rk:column-todo" size="20" />
             </template>
           </n-button>
         </template>
@@ -227,7 +227,7 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
               <n-flex align="center" justify="space-between" class="w-full">
                 <div class="flex items-center">
                   <span class="mr-2 text-gray-400 inline-flex items-center h-full">
-                    <k-icon name="kit:sort-dots" />
+                    <rk-icon name="rk:sort-dots" />
                   </span>
                   <n-checkbox
                     :checked="column.checked"

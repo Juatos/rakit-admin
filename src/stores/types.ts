@@ -1,7 +1,7 @@
 export interface MenuItem {
   title: string
   route: string
-  iconName?: string // 图标名称，如 "kit:user"
+  iconName?: string // 图标名称，如 "rk:user"
   cache?: boolean
   isLeaf?: boolean // 是否是叶子节点，true表示可跳转的页面，false或undefined表示只是菜单分组
   children?: MenuItem[]
@@ -11,7 +11,7 @@ export interface MenuItem {
 export interface ExtendedMenuItem extends Omit<MenuItem, "route"> {
   path?: string
   route: string
-  iconName?: string // 图标名称，如 "kit:user"
+  iconName?: string // 图标名称，如 "rk:user"
   isLeaf?: boolean
   children?: ExtendedMenuItem[]
 }
@@ -22,7 +22,7 @@ export type MenuList = ExtendedMenuItem[]
 export interface CrumbItem {
   title: string
   path?: string
-  icon?: string // 图标名称，如 "kit:home"
+  icon?: string // 图标名称，如 "rk:home"
 }
 
 // 标签页项

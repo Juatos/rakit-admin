@@ -9,9 +9,9 @@ import type {
   RenderLinkOption,
   RenderSelectOption,
   RenderTagOption,
-} from "$kit"
+} from "$rk"
 import type { VNodeChild } from "vue"
-import { Icon as KIcon } from "$kit"
+import { Icon as KIcon } from "$rk"
 import dayjs from "dayjs"
 import { NA, NBadge, NImage, NSwitch, NTag } from "naive-ui"
 import { computed, h } from "vue"

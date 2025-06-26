@@ -152,7 +152,7 @@ defineExpose<FormInst>({
 <template>
   <n-form
     ref="formRef"
-    class="k-form py-2 px-4"
+    class="rk-form py-2 px-4"
     :model="model"
     :label-placement="props.labelPlacement"
     :label-width="props.labelWidth"

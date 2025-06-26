@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useRakit } from "$kit"
+import { useRakit } from "$rk"
 import { useFullscreen } from "@vueuse/core"
 import { computed } from "vue"
 import { manager } from "../extension"
@@ -38,7 +38,7 @@ const {
           class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full"
           @click="menus.toggleCollapsed()"
         >
-          <k-icon :name="menus.isCollapsed ? 'kit:menu-right' : 'kit:menu-left'" size="22" />
+          <rk-icon :name="menus.isCollapsed ? 'rk:menu-right' : 'rk:menu-left'" size="22" />
         </div>
         <n-divider v-if="showCrumb" vertical />
         <transition name="breadcrumb-slide" mode="out-in">
@@ -54,7 +54,7 @@ const {
               @click="handleBreadcrumbClick(item.path)"
             >
               <n-flex align="center" :size="4">
-                <k-icon v-if="item.icon" :name="item.icon" size="16" />
+                <rk-icon v-if="item.icon" :name="item.icon" size="16" />
                 <span>{{ item.title }}</span>
               </n-flex>
             </n-breadcrumb-item>
@@ -87,7 +87,7 @@ const {
                 class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full "
                 @click="toggleTheme()"
               >
-                <k-icon :name="isDark ? 'k-ani:moon' : 'k-ani:sun'" size="20" />
+                <rk-icon :name="isDark ? 'k-ani:moon' : 'k-ani:sun'" size="20" />
               </div>
             </template>
             <span>{{ isDark ? '切换亮色' : '切换暗色' }}</span>
@@ -99,7 +99,7 @@ const {
                 class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full"
                 @click.stop="toggleFullscreen()"
               >
-                <k-icon :name="isFullscreen ? 'kit:screen-exit' : 'kit:screen-full'" size="20" />
+                <rk-icon :name="isFullscreen ? 'rk:screen-exit' : 'rk:screen-full'" size="20" />
               </div>
             </template>
             <span>{{ isFullscreen ? '退出全屏' : '切换全屏' }}</span>
@@ -109,7 +109,7 @@ const {
           <!--            <template #trigger> -->
           <!--              <div class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(&#45;&#45;hover-color)] rounded-full"> -->
           <!--                <n-badge :value="12" processing dot> -->
-          <!--                  <k-icon name="k-ani:bell" size="20" /> -->
+          <!--                  <rk-icon name="rk-ani:bell" size="20" /> -->
           <!--                </n-badge> -->
           <!--              </div> -->
           <!--            </template> -->
@@ -117,7 +117,7 @@ const {
           <!--          </n-tooltip> -->
 
           <!--          <div class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(&#45;&#45;hover-color)] rounded-full"> -->
-          <!--            <k-icon name="kit:setting" size="20" /> -->
+          <!--            <rk-icon name="rk:setting" size="20" /> -->
           <!--          </div> -->
           <!--        </template> -->
 

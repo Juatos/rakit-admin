@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { KCardProps } from "$kit"
+import type { KCardProps } from "$rk"
 
 withDefaults(defineProps <KCardProps>(), {
   spin: false,
@@ -14,7 +14,7 @@ withDefaults(defineProps <KCardProps>(), {
 
 <template>
   <n-card
-    class="k-card"
+    class="rk-card"
     content-class="!p-4"
     :title="title"
     :bordered="bordered"

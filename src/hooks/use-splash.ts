@@ -1,5 +1,5 @@
 import type { Component } from "vue"
-import { Splash as DefaultSPlash } from "$kit"
+import { Splash as DefaultSPlash } from "$rk"
 
 export function useSplash(component?: Component) {
   const app = createApp(component || DefaultSPlash)

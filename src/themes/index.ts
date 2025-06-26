@@ -1,5 +1,5 @@
-import type { AdminThemeOverrides, SetupThemeOption } from "$kit"
-import { ADMIN_THEME } from "$kit"
+import type { AdminThemeOverrides, SetupThemeOption } from "$rk"
+import { ADMIN_THEME } from "$rk"
 
 const defaultThemeOverrides: AdminThemeOverrides = {
   common: {

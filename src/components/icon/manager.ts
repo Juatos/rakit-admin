@@ -10,7 +10,7 @@ class IconManager {
   }
 
   /**
-   * 注册图标别名[kit:remark => mdi:xxxx]
+   * 注册图标别名[rk:remark => mdi:xxxx]
    */
   public mapping(icons: Record<string, string>, override: boolean = false): void {
     if (override) {

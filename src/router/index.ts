@@ -1,4 +1,4 @@
-import type { SetupRouterOption } from "$kit"
+import type { SetupRouterOption } from "$rk"
 import type { App } from "vue"
 import { RouterManager as manager } from "./manager"
 

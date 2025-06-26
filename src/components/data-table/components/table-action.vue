@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DTableAction } from "$kit"
+import type { DTableAction } from "$rk"
 import { isEmpty } from "radash"
 
 interface Props {
@@ -34,7 +34,7 @@ function handleClick(action: DTableAction, row: any, index: number) {
 
 <template>
   <n-flex justify="center">
-    <k-button
+    <rk-button
       v-for="(action, idx) in actions"
       v-show="isShow(action, row, idx)"
       :key="idx"

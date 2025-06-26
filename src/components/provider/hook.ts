@@ -1,4 +1,4 @@
-import type { ModalProps } from "$kit"
+import type { ModalProps } from "$rk"
 import type { Component } from "vue"
 import { inject, shallowRef } from "vue"
 
@@ -7,7 +7,7 @@ export interface DrawerInstance {
 }
 
 export function drawerInstance(): DrawerInstance {
-  const createFunc = inject("k-drawer-create") as (component: Component, props?: any) => void
+  const createFunc = inject("rk-drawer-create") as (component: Component, props?: any) => void
 
   function create(component: Component, props?: any) {
     createFunc(shallowRef(component), props)
@@ -23,7 +23,7 @@ export interface ModalInstance {
 }
 
 export function modalInstance(): ModalInstance {
-  const createFunc = inject("k-modal-create") as (component: Component, props?: ModalProps) => void
+  const createFunc = inject("rk-modal-create") as (component: Component, props?: ModalProps) => void
 
   function create(component: Component, props?: ModalProps): void {
     createFunc(shallowRef(component), props)

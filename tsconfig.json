@@ -4,8 +4,8 @@
     "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
-      "$kit": ["./src"],
-      "$kit/*": ["./src/*"]
+      "$rk": ["./src"],
+      "$rk/*": ["./src/*"]
     }
   },
   "include": [

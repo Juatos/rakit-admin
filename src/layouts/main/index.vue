@@ -1,5 +1,5 @@
 <script lang="ts" setup="">
-import { useRakit } from "$kit"
+import { useRakit } from "$rk"
 import { useToggle, useWindowSize } from "@vueuse/core"
 import LayoutFooter from "./components/layout-footer.vue"
 import LayoutHeader from "./components/layout-header.vue"
