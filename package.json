@@ -36,7 +36,7 @@
       "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
     },
-    "./dist/index.css": "./dist/index.css",
+    "./dist/admin.css": "./dist/admin.css",
     "./shims-vue.d.ts": "./dist/shims-vue.d.ts"
   },
   "files": [
