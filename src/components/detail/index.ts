@@ -1,3 +1,3 @@
 import Detail from "./index.vue"
 
-export { Detail }
+export { Detail, Detail as RkDetail }

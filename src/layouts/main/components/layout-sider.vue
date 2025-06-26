@@ -75,7 +75,7 @@ export default defineComponent({
       </template>
       <template v-else>
         <div class="flex items-center px-4 h-full">
-          <rk-icon name="logo" class="text-22px text-primary" />
+          <rk-icon name="rk:logo-r" class="text-22px text-primary" />
           <span v-show="!menus.isCollapsed" class="ml-2 text-16px font-bold">
             Logo
           </span>

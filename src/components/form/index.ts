@@ -1,3 +1,3 @@
 import Form from "./index.vue"
 
-export { Form }
+export { Form, Form as RkForm }

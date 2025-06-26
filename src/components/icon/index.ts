@@ -17,4 +17,5 @@ export function mappingIcons(icons: Record<string, string>) {
 
 export {
   Icon,
+  Icon as RkIcon,
 }

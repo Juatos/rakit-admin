@@ -49,4 +49,5 @@ export const RAKIT_ICONS = {
   "rk:system": "icon-park-outline:system", // 系统
   "rk:view": "lucide:eye", // 查看
   "rk:home": "gravity-ui:house", // 首页
+  "rk:logo-r": "mynaui:letter-r-square", // LOGO-R
 }

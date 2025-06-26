@@ -4,6 +4,9 @@ import ModalProvider from "./modal-provider.vue"
 
 export {
   DrawerProvider,
+  DrawerProvider as RkDrawerProvider,
   ModalProvider,
+  ModalProvider as RkModalProvider,
   Provider,
+  Provider as RkProvider,
 }
