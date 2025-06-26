@@ -24,7 +24,7 @@ export default defineConfig({
             if (name.startsWith("Rk")) {
               return {
                 name,
-                from: "@rakit/admin",
+                from: "$rk/components",
               }
             }
           },

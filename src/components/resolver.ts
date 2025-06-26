@@ -23,7 +23,7 @@ export function RakitResolver(): ComponentResolver {
       if (name.startsWith("Rk")) {
         return {
           name,
-          from: "@/components",
+          from: "@rakit/admin",
         }
       }
     },

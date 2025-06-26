@@ -1,6 +1,7 @@
 {
-  "extends": "@rakit/conf/tsconfig/library.json",
+  "extends": "@rakit/conf/tsconfig/lib.json",
   "compilerOptions": {
+    "rootDir": ".",
     "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
