@@ -350,35 +350,22 @@ function handleReset() {
   </rk-card>
 </template>
 
-<style scoped>
-.search-item {
-  min-width: 0;
-  margin-bottom: 0;
-}
+<style lang="scss" scoped>
+.search-form {
+  .search-item :deep(.n-input),
+  .search-item :deep(.n-select),
+  .search-item :deep(.n-input-number),
+  .search-item :deep(.n-date-picker),
+  .search-item :deep(.n-time-picker) {
+    --n-height: 32px !important;
+  }
 
-/* 让表单项的输入控件自适应宽度 */
-.search-item :deep(.n-input),
-.search-item :deep(.n-select),
-.search-item :deep(.n-input-number),
-.search-item :deep(.n-date-picker),
-.search-item :deep(.n-time-picker) {
-  width: 100%;
-}
+  .search-item :deep(.n-form-item-feedback-wrapper) {
+    display: none;
+  }
 
-/* 确保标签和输入框在同一行 */
-.search-item :deep(.n-form-item-feedback-wrapper) {
-  min-height: 0;
-}
-
-.search-item :deep(.n-form-item-label) {
-  height: auto;
-  line-height: 32px;
-}
-
-.button-group {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 32px;
+  .search-item :deep(.n-form-item-label) {
+    color: var(--n-label-text-color);
+  }
 }
 </style>

@@ -3,7 +3,7 @@
   "version": "1.2.3",
   "private": false,
   "type": "module",
-  "packageManager": "pnpm@10.12.3",
+  "packageManager": "pnpm@10.12.4",
   "engines": {
     "node": ">=20",
     "pnpm": ">=10"
@@ -36,8 +36,7 @@
       "import": "./dist/index.mjs",
       "default": "./dist/index.mjs"
     },
-    "./dist/admin.css": "./dist/admin.css",
-    "./shims-vue.d.ts": "./dist/shims-vue.d.ts"
+    "./dist/admin.css": "./dist/admin.css"
   },
   "files": [
     "README.md",
@@ -48,19 +47,19 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "vite build",
+    "watch": "vite build --watch",
     "lint": "eslint .",
     "type-check": "vue-tsc --noEmit",
     "clean": "rm -rf node_modules dist",
     "preview": "vite preview",
-    "prepublishOnly": "pnpm run build && cp src/shims-vue.d.ts dist/"
+    "prepublishOnly": "pnpm run build"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "dependencies": {
-    "naive-ui": "^2.42.0",
-    "src": "link:src"
+    "naive-ui": "^2.42.0"
   },
   "peerDependencies": {
     "@vueuse/core": "^13.0.0",
@@ -72,16 +71,16 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@rakit/conf": "^1.2.2",
+    "@rakit/conf": "1.2.3",
     "@types/node": "^24.0.4",
     "@vitejs/plugin-vue": "^6.0.0",
     "eslint": "^9.29.0",
-    "sass": "^1.89.2",
+    "sass-embedded": "^1.89.2",
     "typescript": "^5.8.3",
     "unocss": "^66.3.2",
     "unplugin-auto-import": "^19.3.0",
     "unplugin-vue-components": "^28.7.0",
-    "vite": "^7.0.0",
+    "vite": "npm:rolldown-vite@latest",
     "vite-plugin-dts": "^4.5.4",
     "vue-tsc": "^2.2.10"
   }

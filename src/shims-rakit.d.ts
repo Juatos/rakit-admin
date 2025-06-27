@@ -11,20 +11,6 @@ declare global {
   }
 }
 
-declare module "vue" {
-  export interface GlobalComponents {
-    RkCard: typeof import("@rakit/admin")["Card"]
-    RkIcon: typeof import("@rakit/admin")["Icon"]
-    RkButton: typeof import("@rakit/admin")["Button"]
-    RkModal: typeof import("@rakit/admin")["Modal"]
-    RkDrawer: typeof import("@rakit/admin")["Drawer"]
-    RkForm: typeof import("@rakit/admin")["Form"]
-    RkDataTable: typeof import("@rakit/admin")["DataTable"]
-    RkDetail: typeof import("@rakit/admin")["Detail"]
-    RkProvider: typeof import("@rakit/admin")["Provider"]
-  }
-}
-
 // 声明Vue文件模块
 declare module "*.vue" {
   import type { DefineComponent } from "vue"

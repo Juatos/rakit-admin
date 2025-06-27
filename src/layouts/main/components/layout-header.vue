@@ -87,7 +87,7 @@ const {
                 class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full "
                 @click="toggleTheme()"
               >
-                <rk-icon :name="isDark ? 'k-ani:moon' : 'k-ani:sun'" size="20" />
+                <rk-icon :name="isDark ? 'rk-ani:moon' : 'rk-ani:sun'" size="20" />
               </div>
             </template>
             <span>{{ isDark ? '切换亮色' : '切换暗色' }}</span>
@@ -149,7 +149,7 @@ const {
   </n-layout-header>
 </template>
 
-<style>
+<style lang="scss" scoped>
 :deep(.n-button.n-button--quaternary:hover) {
   background-color: rgba(0, 0, 0, 0.06);
 }
@@ -158,14 +158,6 @@ const {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.hover\:bg-\[var\(--hover-color\)\]:hover {
-  background-color: var(--hover-color);
 }
 
 :deep(.n-breadcrumb-item:not(:last-child)) {

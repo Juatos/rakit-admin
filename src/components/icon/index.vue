@@ -18,18 +18,6 @@ async function initContent() {
   catch (error) {
     console.error("Failed to load icon:", error)
   }
-
-  // const [collection, name] = props.name?.split(":")
-  // if (collection && name) {
-  //   try {
-  //     const iconServer = getIconServer()
-  //     const response = await fetch(`${iconServer}${collection}/${name}.svg`)
-  //     content.value = await response.text()
-  //   }
-  //   catch (error) {
-  //     console.error("Failed to load icon:", error)
-  //   }
-  // }
 }
 watch(
   () => props.name,

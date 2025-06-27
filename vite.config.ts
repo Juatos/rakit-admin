@@ -1,4 +1,6 @@
 import { resolve } from "node:path"
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-expect-error
 import vue from "@vitejs/plugin-vue"
 import UnoCSS from "unocss/vite"
 import AutoImport from "unplugin-auto-import/vite"
@@ -10,6 +12,7 @@ import dts from "vite-plugin-dts"
 export default defineConfig({
   plugins: [
     vue(),
+    UnoCSS(),
     AutoImport({
       imports: ["vue", "vue-router", "pinia", "@vueuse/core"],
       dts: resolve(__dirname, "src/types/auto-imports.d.ts"),
@@ -32,7 +35,6 @@ export default defineConfig({
       ],
       dts: resolve(__dirname, "src/types/components.d.ts"),
     }),
-    UnoCSS(),
     dts({
       tsconfigPath: resolve(__dirname, "./tsconfig.json"),
       insertTypesEntry: true,
@@ -50,19 +52,32 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      formats: ["es"],
+      name: "rakit-admin",
       fileName: () => "index.mjs",
+      formats: ["es"],
     },
+    cssCodeSplit: false,
+    outDir: "dist",
+    sourcemap: false,
+    minify: "terser",
+    cssMinify: "esbuild",
     rollupOptions: {
-      external: ["vue", "naive-ui"],
+      external: ["vue", "naive-ui", "vue-router", "pinia", "@vueuse/core", "alova", "dayjs", "radash"],
       output: {
+        format: "es",
         globals: {
           "vue": "Vue",
           "naive-ui": "naive",
+          "vue-router": "VueRouter",
+          "pinia": "Pinia",
+          "@vueuse/core": "VueUse",
+          "alova": "Alova",
+          "dayjs": "dayjs",
+          "radash": "radash",
         },
+        assetFileNames: "admin.css",
       },
     },
-    outDir: "dist",
     emptyOutDir: true,
   },
 })

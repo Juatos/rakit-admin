@@ -5,6 +5,7 @@ import { setupHttp } from "$rk/http"
 import { setupRouter } from "$rk/router"
 import { setupStore } from "$rk/stores"
 import { setupTheme } from "$rk/themes"
+import { createApp } from "vue"
 
 function setupSplash(component?: Component) {
   const app = createApp(component || DefaultSPlash)
