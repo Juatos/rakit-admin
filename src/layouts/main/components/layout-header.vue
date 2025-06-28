@@ -207,11 +207,11 @@ const {
 }
 
 /* 面包屑图标动画 */
-:deep(.n-breadcrumb-item .k-icon) {
+:deep(.n-breadcrumb-item .rk-icon) {
   transition: transform 0.15s ease;
 }
 
-:deep(.n-breadcrumb-item:hover .k-icon) {
+:deep(.n-breadcrumb-item:hover .rk-icon) {
   transform: translateX(1px);
 }
 </style>

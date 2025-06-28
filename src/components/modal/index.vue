@@ -138,7 +138,7 @@ defineExpose<ModalExpose>({
 </template>
 
 <style lang="scss">
-.k-modal {
+.rk-modal {
   &.is-adaptive {
     & > .n-card__content {
       max-height: 80vh;

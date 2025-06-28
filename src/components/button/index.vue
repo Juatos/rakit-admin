@@ -23,7 +23,7 @@ const { icon, title, ...bind } = props
 </template>
 
 <style lang="scss">
-.k-button.n-button .n-button__icon {
+.rk-button.n-button .n-button__icon {
   margin-right: 2px !important;
 }
 </style>
