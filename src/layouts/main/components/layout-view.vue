@@ -69,8 +69,8 @@ defineExpose({ refresh })
 
 <template>
   <n-layout-content
+    class="shadow-lg bg-[#4d6bfe]/3 rounded"
     :style="{ height: contentHeight }"
-    class="shadow-lg p-4 bg-[#4d6bfe]/3 rounded"
     native-scrollbar
   >
     <router-view v-slot="{ Component, route }">

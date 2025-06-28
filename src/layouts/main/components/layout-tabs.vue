@@ -210,7 +210,7 @@ function handleToggleFullscreen() {
             <div
               class="h-30px px-2 gap-0 flex items-center justify-between rounded-10px min-w-85px"
               :class="[
-                tab.key === tabs.activeTab ? `bg-[var(--primary-item-color-active)] min-w-105px` : 'hover:bg-[\'var(--hover-color)\']',
+                tab.key === tabs.activeTab ? `bg-[var(--primary-item-color-active)] min-w-105px` : 'hover:bg-[var(--hover-color)]',
                 i === 0 ? 'text-center min-w-80px!' : '',
               ]"
             >

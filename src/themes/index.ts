@@ -13,8 +13,8 @@ const defaultThemeOverrides: AdminThemeOverrides = {
     primaryColorSuppl: "#289AE6FF",
     primaryItemColorActive: "#ecf0ff",
 
-    borderRadius: "8px",
-    borderRadiusSmall: "6px",
+    borderRadius: "6px",
+    borderRadiusSmall: "4px",
 
     heightMini: "16px",
     heightTiny: "20px",
@@ -41,10 +41,10 @@ const defaultThemeDarkOverrides: AdminThemeOverrides = {
     primaryColorHover: "#289AE6FF",
     primaryColorPressed: "#218ED7FF",
     primaryColorSuppl: "#289AE6FF",
-    primaryItemColorActive: "#2e3033",
+    // primaryItemColorActive: "#2e3033",
 
-    borderRadius: "8px",
-    borderRadiusSmall: "6px",
+    borderRadius: "6px",
+    borderRadiusSmall: "4px",
 
     heightMini: "16px",
     heightTiny: "20px",
@@ -107,3 +107,5 @@ export function useTheme() {
     toggleTheme,
   }
 }
+
+export * from "./color"

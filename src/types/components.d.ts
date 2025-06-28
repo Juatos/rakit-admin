@@ -78,6 +78,7 @@ declare module 'vue' {
     Splash: typeof import('./../components/app/splash.vue')['default']
     TableAction: typeof import('./../components/data-table/components/table-action.vue')['default']
     Toolbar: typeof import('./../components/data-table/components/toolbar.vue')['default']
+    View: typeof import('./../components/view/index.vue')['default']
     Wrapper: typeof import('./../components/data-table/wrapper.vue')['default']
   }
 }

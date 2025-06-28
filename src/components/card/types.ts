@@ -5,8 +5,8 @@ export interface KCardProps {
   title?: string
   /** 是否显示边框 */
   bordered?: boolean
-  /** 是否填满父容器 */
-  over?: boolean
+  /** 是否填满视口 */
+  fillview?: boolean
   /** 高度 */
   height?: number
 }

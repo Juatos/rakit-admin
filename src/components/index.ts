@@ -8,6 +8,7 @@ export * from "./form"
 export * from "./icon"
 export * from "./modal"
 export * from "./provider"
-
 // 导出组件解析器
 export * from "./resolver"
+
+export * from "./view"

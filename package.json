@@ -1,6 +1,6 @@
 {
   "name": "@rakit/admin",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "private": false,
   "type": "module",
   "packageManager": "pnpm@10.12.4",
@@ -71,10 +71,10 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@rakit/conf": "1.2.3",
-    "@types/node": "^24.0.4",
+    "@rakit/conf": "1.2.4",
+    "@types/node": "^24.0.7",
     "@vitejs/plugin-vue": "^6.0.0",
-    "eslint": "^9.29.0",
+    "eslint": "^9.30.0",
     "sass-embedded": "^1.89.2",
     "typescript": "^5.8.3",
     "unocss": "^66.3.2",

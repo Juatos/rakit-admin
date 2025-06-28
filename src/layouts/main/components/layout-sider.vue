@@ -64,8 +64,9 @@ export default defineComponent({
     :collapsed="menus.isCollapsed"
     :collapsed-width="60"
     :width="240"
+    :inverted="false"
   >
-    <n-layout-header bordered class="h-50px leading-50px">
+    <n-layout-header bordered class="h-50px leading-50px" :inverted="false">
       <template v-if="manager.hasReplacement('sider.logo')">
         <component
           :is="comp"
@@ -75,14 +76,14 @@ export default defineComponent({
       </template>
       <template v-else>
         <div class="flex items-center px-4 h-full">
-          <rk-icon name="rk:logo-r" class="text-22px text-primary" />
+          <rk-icon name="rk:logo-r" :size="menus.isCollapsed ? 32 : 24" />
           <span v-show="!menus.isCollapsed" class="ml-2 text-16px font-bold">
-            Logo2
+            RAKIT-ADMIN
           </span>
         </div>
       </template>
     </n-layout-header>
-    <n-layout-content style="height: calc(100vh - 50px)" native-scrollbar>
+    <n-scrollbar style="height: calc(100vh - 50px)">
       <n-menu
         ref="menuRef"
         v-model:value="isActive"
@@ -99,8 +100,9 @@ export default defineComponent({
         key-field="route"
         label-field="title"
         :on-update:value="onMenuChange"
+        :inverted="false"
       />
-    </n-layout-content>
+    </n-scrollbar>
   </n-layout-sider>
 </template>
 

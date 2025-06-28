@@ -12,7 +12,7 @@ const { icon, title, ...bind } = props
 
 <template>
   <n-button class="rk-button" v-bind="bind">
-    <template #icon>
+    <template v-if="icon" #icon>
       <rk-icon :name="icon" size="16" />
     </template>
     <template v-if="title">

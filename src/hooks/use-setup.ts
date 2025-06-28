@@ -1,6 +1,5 @@
 import type { Component } from "vue"
 import { Splash as DefaultSPlash } from "$rk"
-import { setupComponent } from "$rk/components/hook"
 import { setupHttp } from "$rk/http"
 import { setupRouter } from "$rk/router"
 import { setupStore } from "$rk/stores"
@@ -21,7 +20,6 @@ export function useSetup() {
     initRouter: setupRouter,
     initTheme: setupTheme,
     initStore: setupStore,
-    initComponent: setupComponent,
     initHttp: setupHttp,
   }
 }
