@@ -13,10 +13,6 @@ export default defineConfig({
     }),
   ],
   rules: [
-    ['flex-center', {
-      display: 'flex',
-      'justify-content': 'center',
-      'align-items': 'center'
-    }],
+    ["flex-center", { "display": "flex", "justify-content": "center", "align-items": "center" }],
   ],
 })
