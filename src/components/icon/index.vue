@@ -41,7 +41,7 @@ const iconComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="iconComponent" v-if="content" class="rk-icon" />
+  <component :is="iconComponent" v-if="content" />
 </template>
 
 <style>
