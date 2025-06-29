@@ -2,14 +2,14 @@ import type { TabItem } from "$rk"
 import { useRakitRouter } from "$rk/router"
 
 export function useTabs() {
-  const { homePath } = useRakitRouter()
+  const { defaultRoute } = useRakitRouter()
 
   // 当前激活的标签页
-  const activeTab = ref<string>(homePath)
+  const activeTab = ref<string>(defaultRoute)
 
   // 标签页列表
   const model = ref<TabItem[]>([
-    { key: homePath, title: "首页", closable: false, count: 1 },
+    { key: defaultRoute, title: "首页", closable: false, count: 1 },
   ])
 
   function setActive(value: string = "") {
@@ -48,14 +48,14 @@ export function useTabs() {
   // 关闭标签页
   function closeTab(key: string) {
     // 不允许关闭首页
-    if (key === homePath) { return }
+    if (key === defaultRoute) { return }
 
     const index = model.value.findIndex(item => item.key === key)
 
     if (index !== -1) {
       // 如果关闭的是当前激活的标签页，则激活前一个标签页
       if (key === activeTab.value) {
-        activeTab.value = model.value[index - 1]?.key || homePath
+        activeTab.value = model.value[index - 1]?.key || defaultRoute
       }
 
       // 移除标签
@@ -65,20 +65,20 @@ export function useTabs() {
 
   // 关闭其他标签页
   function closeOtherTabs(key: string) {
-    model.value = model.value.filter((item: TabItem) => item.key === key || item.key === homePath)
+    model.value = model.value.filter((item: TabItem) => item.key === key || item.key === defaultRoute)
     activeTab.value = key
   }
 
   // 关闭所有可关闭的标签页
   function closeAllTabs() {
     model.value = model.value.filter((item: TabItem) => !item.closable)
-    activeTab.value = homePath
+    activeTab.value = defaultRoute
   }
 
   // 仅移除标签，不改变activeTab（用于组件层控制路由跳转时序）
   function remTab(key: string) {
     // 不允许移除首页
-    if (key === homePath) { return }
+    if (key === defaultRoute) { return }
 
     const index = model.value.findIndex(item => item.key === key)
     if (index !== -1) {

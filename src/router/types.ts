@@ -21,6 +21,11 @@ export type RouterMode
 
 export type RouteComponent = VueRouterComponent | Lazy<VueRouterComponent>
 
+export interface DefaultRoute {
+  path: string
+  title: string
+}
+
 export interface SetupRouterOption {
   // 路由模式
   mode: RouterMode
@@ -29,6 +34,6 @@ export interface SetupRouterOption {
   guards?: RouterGuard | RouterGuard[]
   // 跟路由
   rootRoutes?: string[]
-  homePath: string
+  defaultRoute: DefaultRoute
   modules: Record<string, () => Promise<unknown>>
 }

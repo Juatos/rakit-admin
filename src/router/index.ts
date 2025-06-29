@@ -4,11 +4,12 @@ import { RouterManager as manager } from "./manager"
 
 export function useRakitRouter() {
   const router = manager.getRouter()
-  const homePath = manager.getHomePath()
+  const defaultRoute = manager.getDefaultRoute()
 
   return {
     router,
-    homePath,
+    defaultRoute: defaultRoute.path,
+    defaultRouteTitle: defaultRoute.title,
   }
 }
 

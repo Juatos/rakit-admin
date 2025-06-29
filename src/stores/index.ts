@@ -41,7 +41,7 @@ export const adminStore = defineStore("rakit-admin", () => {
     tabStore.addTab({
       key: value,
       title: menuTitle,
-      closable: value !== useRakitRouter().homePath,
+      closable: value !== useRakitRouter().defaultRoute,
       count: 1,
     })
   }
@@ -77,7 +77,7 @@ export const adminStore = defineStore("rakit-admin", () => {
   function closeOtherTabs(key: string) {
     // 收集要删除的标签keys
     const keysToRemove = tabStore.model.value
-      .filter((item: any) => item.key !== key && item.key !== useRakitRouter().homePath)
+      .filter((item: any) => item.key !== key && item.key !== useRakitRouter().defaultRoute)
       .map((item: any) => item.key)
 
     tabStore.closeOtherTabs(key)
@@ -96,9 +96,9 @@ export const adminStore = defineStore("rakit-admin", () => {
       .filter((item: any) => item.closable)
       .map((item: any) => item.key)
 
-    const { homePath } = useRakitRouter()
+    const { defaultRoute } = useRakitRouter()
     // 关闭所有标签时，只更新状态，不触发路由跳转（由组件层处理）
-    switchTab(homePath)
+    switchTab(defaultRoute)
 
     // 然后关闭所有可关闭的标签页
     tabStore.closeAllTabs()

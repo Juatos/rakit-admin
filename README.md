@@ -609,7 +609,7 @@ const detailItems = [
 | store | AdminStore | 状态管理 |
 | router | Router | 路由实例 |
 | theme | ThemeContext | 主题上下文 |
-| homePath | string | 首页路径 |
+| defaultRoute | string | 首页路径 |
 | message | MessageProviderInst | 消息提示 |
 | dialog | DialogProviderInst | 对话框 |
 | notification | NotificationProviderInst | 通知 |

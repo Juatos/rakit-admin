@@ -16,7 +16,8 @@ interface RakitContext {
   store: ReturnType<typeof useAdminStore>
   router: ReturnType<typeof useRakitRouter>["router"]
   theme: ReturnType<typeof useTheme>
-  homePath: string
+  defaultRoute: string
+  defaultRouteTitle: string
   message: MessageProviderInst
   dialog: DialogProviderInst
   notification: NotificationProviderInst
@@ -31,12 +32,13 @@ interface RakitContext {
 
 export function useRakit(): RakitContext {
   const store = useAdminStore()
-  const { router, homePath } = useRakitRouter()
+  const { router, defaultRoute, defaultRouteTitle } = useRakitRouter()
 
   return {
     store,
     router,
-    homePath,
+    defaultRoute,
+    defaultRouteTitle,
     theme: useTheme(),
     message: window?.$message,
     dialog: window?.$dialog,

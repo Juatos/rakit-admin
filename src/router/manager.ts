@@ -1,4 +1,11 @@
-import type { NavigationGuardReturn, RouteComponent, RouterGuard, RouterMode, SetupRouterOption } from "$rk"
+import type {
+  DefaultRoute,
+  NavigationGuardReturn,
+  RouteComponent,
+  RouterGuard,
+  RouterMode,
+  SetupRouterOption,
+} from "$rk"
 import type {
   RouteLocationNormalized,
   RouteRecordRaw,
@@ -29,14 +36,18 @@ const routerModeEnum: Record<RouterMode, (base?: string) => RouterHistory> = {
 class Manager {
   private router: any = null
 
-  private homePath: string = "/"
+  private defaultRoute: DefaultRoute = {
+    path: "/",
+    title: "首页",
+  }
+
   // 存储所有不需要布局的路径
   private rootRoutes: Set<string> = new Set()
   // 存储自定义路由守卫
   private guards: Array<RouterGuard> = []
 
   public async init(option: SetupRouterOption) {
-    option?.homePath && (this.homePath = option.homePath)
+    option?.defaultRoute && (this.defaultRoute = option.defaultRoute)
     this.initRouter(option)
     this.initNoLayoutRoutes(option?.rootRoutes || [])
     await this.initCustomRoutes(option.modules)
@@ -47,8 +58,8 @@ class Manager {
     return this.router
   }
 
-  getHomePath() {
-    return this.homePath
+  getDefaultRoute() {
+    return this.defaultRoute
   }
 
   async initCustomRoutes(modules: Record<string, () => Promise<unknown>>) {

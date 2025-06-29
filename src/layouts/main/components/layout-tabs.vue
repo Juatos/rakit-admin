@@ -2,7 +2,7 @@
 import type { DropdownOption } from "naive-ui"
 import { useRakit } from "$rk"
 
-const { store, router, homePath, tabStore } = useRakit()
+const { store, router, defaultRoute, tabStore } = useRakit()
 
 // 注入刷新方法
 const refreshCurrentRoute = inject<() => void>("refreshCurrentRoute")
@@ -39,7 +39,7 @@ onMounted(() => {
 // 监听 activeTab 的变化，实现标签居中
 watch(() => tabStore.activeTab, () => {
   nextTick(() => {
-    if (tabStore.activeTab === homePath) {
+    if (tabStore.activeTab === defaultRoute) {
       centerHomeTab()
       return
     }
@@ -69,7 +69,7 @@ watch(() => tabStore.activeTab, () => {
 
 // 首页居中函数
 function centerHomeTab() {
-  const homeTabEl = document.querySelector(`[data-key="${homePath}"]`) as HTMLElement
+  const homeTabEl = document.querySelector(`[data-key="${defaultRoute}"]`) as HTMLElement
   const scrollContainer = scrollableTabsRef.value
 
   if (homeTabEl && scrollContainer) {
@@ -102,7 +102,7 @@ const dropdownOptions = computed(() => {
   const options: DropdownOption[] = []
 
   // 如果当前不是首页，添加"关闭当前标签页"选项
-  if (tabStore.activeTab !== homePath) {
+  if (tabStore.activeTab !== defaultRoute) {
     options.push({
       label: "关闭当前标签页",
       key: "close-current",
@@ -153,9 +153,9 @@ function handleCloseTab(key: string) {
 
   if (key === currentActiveTab) {
     // 如果关闭当前标签，先切换到目标标签（不路由跳转）
-    const { homePath } = useRakit()
+    const { defaultRoute } = useRakit()
     const index = tabStore.model.findIndex(item => item.key === key)
-    const newActiveKey = tabStore.model[index - 1]?.key || homePath
+    const newActiveKey = tabStore.model[index - 1]?.key || defaultRoute
 
     // 先切换activeTab状态，不路由跳转
     store.switchTab(newActiveKey)
