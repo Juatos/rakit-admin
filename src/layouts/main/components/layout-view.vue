@@ -3,7 +3,7 @@ import type { Ref } from "vue"
 import { useRakit } from "$rk"
 import { computed, inject, ref, watch } from "vue"
 
-const { tabStore, router } = useRakit()
+const { tabStore, layoutStore, router } = useRakit()
 
 // 注入局部全屏状态
 const isPartialFullscreen = inject<Readonly<Ref<boolean>>>("isPartialFullscreen")
@@ -42,13 +42,14 @@ function shouldCache(path: string) {
 
 // 计算内容区域高度
 const contentHeight = computed(() => {
+  const footerHeight = layoutStore.showFooter ? 30 : 0
   if (isPartialFullscreen?.value) {
     // 全屏模式: 100vh - 标签栏高度(36px) - footer高度(30px)
-    return "calc(100vh - 66px)"
+    return `calc(100vh - ${footerHeight}px - 36px)`
   }
   else {
     // 正常模式: 100vh - header(50px) - 标签栏(36px) - footer(30px) - 其他间距
-    return "calc(100vh - 116px)"
+    return `calc(100vh - ${footerHeight}px - 86px)`
   }
 })
 

@@ -4,6 +4,7 @@ import { setupHttp } from "$rk/http"
 import { setupRouter } from "$rk/router"
 import { setupStore } from "$rk/stores"
 import { setupTheme } from "$rk/themes"
+import { createPinia } from "pinia"
 import { sleep } from "radash"
 import { createApp } from "vue"
 
@@ -24,7 +25,7 @@ export async function rakitSetup(rakitConf: any) {
 
   const callback = setupSplash()
   setupTheme(rakitConf.theme)
-  setupStore(app, rakitConf.pinia?.instance || createPinia())
+  setupStore(app, rakitConf?.pinia?.instance || createPinia())
   setupHttp(rakitConf.http)
   await setupRouter(app, rakitConf.router)
   await setupLayout(rakitConf.layout)

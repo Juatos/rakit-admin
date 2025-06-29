@@ -7,6 +7,8 @@ import LayoutSider from "./components/layout-sider.vue"
 import LayoutTabs from "./components/layout-tabs.vue"
 import LayoutView from "./components/layout-view.vue"
 
+const { layoutStore } = useRakit()
+
 // 创建组件引用
 const viewRef = ref<InstanceType<typeof LayoutView>>()
 
@@ -52,7 +54,7 @@ provide("isPartialFullscreen", readonly(isPartialFullscreen))
       <LayoutHeader v-show="!isPartialFullscreen" />
       <LayoutTabs />
       <LayoutView ref="viewRef" />
-      <LayoutFooter />
+      <LayoutFooter v-if="layoutStore.showFooter" />
     </n-layout>
   </n-layout>
 </template>
