@@ -330,7 +330,7 @@ function handleReset() {
             <!-- 按钮组 -->
             <template v-else-if="cell.type === 'button-group'">
               <div class="button-group">
-                <n-flex>
+                <n-flex justify="end">
                   <n-button v-if="shouldShowToggleButton" size="tiny" text @click="toggleCollapse">
                     {{ isCollapsed ? '更多' : '收起' }}
                     <template #icon>

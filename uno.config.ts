@@ -12,7 +12,10 @@ export default defineConfig({
       applyVariable: ["--at-apply"],
     }),
   ],
+  shortcuts: {
+    "flex-center": "flex justify-center items-center",
+  },
   rules: [
-    ["flex-center", { "display": "flex", "justify-content": "center", "align-items": "center" }],
+
   ],
 })
