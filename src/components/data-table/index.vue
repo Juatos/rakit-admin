@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { TableColumns } from "naive-ui/es/data-table/src/interface"
+import type { DTableColumn, DTableProps } from "$rk"
+import type { DataTableColumns, DataTableRowKey } from "naive-ui"
 import type { TableDensityType } from "./consts"
-import type { DTableColumn, DTableProps } from "./types"
 import SearchAlone from "./components/search-alone.vue"
 import Toolbar from "./components/toolbar.vue"
 import { DEFAULT_TABLE_DENSITY } from "./consts"
@@ -45,23 +45,7 @@ const scrollX = ref(formatColumns.value.reduce((acc: any, col: any) => acc + (Nu
 const tableDensity = ref<TableDensityType>(DEFAULT_TABLE_DENSITY)
 
 // 选中的行数据
-const selectedRowKeys = ref<(string | number)[]>([])
-const selectedRows = ref<any[]>([])
-
-// 表格选择配置
-const rowSelectionConfig = computed(() => {
-  if (!props.rowSelection) {
-    return null
-  }
-
-  return {
-    type: "checkbox",
-    onChange: (keys: (string | number)[], rows: any[]) => {
-      selectedRowKeys.value = keys
-      selectedRows.value = rows
-    },
-  }
-})
+const rowKeys = ref<any[]>([])
 
 // 列配置（不包含操作列）
 const originalColumnsWithoutAction = computed(() => {
@@ -71,8 +55,17 @@ const originalColumnsWithoutAction = computed(() => {
 // 列配置
 const columnsConfig = ref<DTableColumn[]>([...originalColumnsWithoutAction.value])
 
+function formatColumnsRowSelection(columns: DataTableColumns): DataTableColumns {
+  if (props.rowSelection !== false) {
+    columns.unshift({
+      type: "selection",
+      // disabled: props.rowSelection?.disabled | (() => false),
+    })
+  }
+  return columns
+}
 // 当前实际显示的列
-const displayColumns = computed<TableColumns>(() => {
+const displayColumns = computed<DataTableColumns>(() => {
   // 先过滤掉 show 为 false 的列
   const visibleColumns = formatColumns.value.filter((col) => {
     if (col.show === undefined) { return true }
@@ -105,12 +98,16 @@ const displayColumns = computed<TableColumns>(() => {
       }
     }
 
-    return filterSortColumns as TableColumns
+    return formatColumnsRowSelection(filterSortColumns as DataTableColumns)
   }
 
   // 否则返回过滤后的列
-  return visibleColumns as TableColumns
+  return formatColumnsRowSelection(visibleColumns as DataTableColumns)
 })
+
+function handleCheck(keys: DataTableRowKey[]) {
+  rowKeys.value = keys
+}
 
 // 处理表格刷新
 async function handleRefresh() {
@@ -162,7 +159,7 @@ defineExpose({
         v-if="showToolbar"
         :extras="extras"
         :columns="originalColumnsWithoutAction"
-        :selected-rows="selectedRows"
+        :row-keys="rowKeys"
         @refresh="handleRefresh"
         @toggle-density="handleToggleDensity"
         @column-setting="handleColumnSetting"
@@ -187,10 +184,10 @@ defineExpose({
         :data="dataSource"
         :pagination="fromatPagination"
         :size="tableDensity"
-        :row-key="(row: any) => row.id"
-        :row-selection="rowSelectionConfig"
+        :row-key="(row: any) => row[props.rowSelection?.key ?? 'id']"
         empty="暂无数据"
         remote
+        @update:checked-row-keys="handleCheck"
       />
     </Wrapper>
   </n-flex>

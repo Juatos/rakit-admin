@@ -138,6 +138,9 @@ export interface DTableProps {
   // 工具栏功能按钮
   extras?: (DTableExtra | DTableBatchExtra)[]
   // 是否可选择行
-  rowSelection?: boolean
+  rowSelection?: {
+    key?: string
+    disabled?: (row: any) => boolean
+  } | false
   onSearch: DTableSearchFn
 }

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { DTableBatchExtra, DTableColumn, DTableExtra } from "$rk"
 import type { DropdownOption } from "naive-ui"
 import type { TableDensityType } from "../consts"
-import type { DTableBatchExtra, DTableColumn, DTableExtra } from "../types"
 import { ref, watch } from "vue"
 import { COLUMN_SETTING_WIDTH, DEFAULT_TABLE_DENSITY, TABLE_DENSITY_OPTIONS } from "../consts"
 
@@ -12,11 +12,11 @@ const props = withDefaults(defineProps<{
   // 表格列配置
   columns?: DTableColumn[]
   // 选中的行数据
-  selectedRows?: any[]
+  rowKeys?: any[]
 }>(), {
   extras: () => [],
   columns: () => [],
-  selectedRows: () => [],
+  rowKeys: () => [],
 })
 
 const emit = defineEmits<{
@@ -144,13 +144,13 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
         <!-- 批量操作按钮 -->
         <template v-if="isBatchFunc(func)">
           <rk-button
-            v-if="!func.show || func.show(selectedRows)"
+            v-if="!func.show || func.show(rowKeys)"
             class="text-sm"
             :type="func.type || 'default'"
             :icon="func.icon || ''"
             :title="func.label"
-            :disabled="func.disabled ? func.disabled(selectedRows) : false"
-            @click="() => func.handler(selectedRows)"
+            :disabled="func.disabled ? func.disabled(rowKeys) : false"
+            @click="() => func.handler(rowKeys)"
           />
         </template>
 
