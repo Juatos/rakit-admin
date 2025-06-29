@@ -1,27 +1,32 @@
-import type { LayoutExtension } from "$rk"
-import type { Ref } from "vue"
+import type { LayoutExtension, LayoutFooter, LayoutSider } from "$rk"
 
-export function useLayouts(): {
-  extensions: Ref<LayoutExtension>
-  showFooter: Ref<boolean>
-  setup: (config: any) => void
-} {
+export function useLayouts() {
   // 扩展点配置
   const extensions = ref<LayoutExtension>({} as LayoutExtension)
-  const showFooter = ref<boolean>(true)
+
+  const footer = ref<LayoutFooter>({
+    show: true,
+  })
+  const sider = ref<LayoutSider>({
+    inverted: false,
+  })
 
   function setup(config: any) {
     if (config?.extensions) {
       extensions.value = config.extensions
     }
-    if (config?.showFooter !== undefined) {
-      showFooter.value = config.showFooter
+    if (config?.footer) {
+      footer.value = config.footer
+    }
+    if (config?.sider) {
+      sider.value = config.sider
     }
   }
 
   return {
     extensions,
-    showFooter,
+    footer,
+    sider,
     setup,
   }
 }

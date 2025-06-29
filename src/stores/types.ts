@@ -35,5 +35,13 @@ export interface TabItem {
   count: number // 访问计数，用于判断是否首次访问
 }
 
-export type LayoutPoint = "SIDER_LOGO" | "HEADER_TOOLS" | "HEADER_PROFILE" | "FOOTER"
-export type LayoutExtension = Record<LayoutPoint, Component>
+// export type LayoutPoint = "SIDER_LOGO" | "HEADER_TOOLS" | "HEADER_PROFILE" | "FOOTER"
+export type LayoutExtension = Record<string, Component>
+
+export interface LayoutFooter {
+  show: boolean
+}
+
+export interface LayoutSider {
+  inverted: boolean
+}

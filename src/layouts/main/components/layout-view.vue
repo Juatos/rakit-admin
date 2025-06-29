@@ -42,7 +42,7 @@ function shouldCache(path: string) {
 
 // 计算内容区域高度
 const contentHeight = computed(() => {
-  const footerHeight = layoutStore.showFooter ? 30 : 0
+  const footerHeight = layoutStore.footer.show ? 30 : 0
   if (isPartialFullscreen?.value) {
     // 全屏模式: 100vh - 标签栏高度(36px) - footer高度(30px)
     return `calc(100vh - ${footerHeight}px - 36px)`

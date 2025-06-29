@@ -54,7 +54,7 @@ provide("isPartialFullscreen", readonly(isPartialFullscreen))
       <LayoutHeader v-show="!isPartialFullscreen" />
       <LayoutTabs />
       <LayoutView ref="viewRef" />
-      <LayoutFooter v-if="layoutStore.showFooter" />
+      <LayoutFooter v-if="layoutStore.footer.show" />
     </n-layout>
   </n-layout>
 </template>
