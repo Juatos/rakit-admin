@@ -3,7 +3,7 @@ import type { Ref } from "vue"
 import { useRakit } from "$rk"
 import { computed, inject, ref, watch } from "vue"
 
-const { tabs, router } = useRakit()
+const { tabStore, router } = useRakit()
 
 // 注入局部全屏状态
 const isPartialFullscreen = inject<Readonly<Ref<boolean>>>("isPartialFullscreen")
@@ -11,9 +11,9 @@ const isPartialFullscreen = inject<Readonly<Ref<boolean>>>("isPartialFullscreen"
 // 跟踪已经渲染过的组件
 const cachedComponents = ref<Map<string, number>>(new Map())
 
-// 监听tabs变化，清理已关闭标签对应的渲染记录
+// 监听tabStore变化，清理已关闭标签对应的渲染记录
 watch(
-  () => tabs.model,
+  () => tabStore.model,
   (newTabs) => {
     // 获取当前存在的标签keys
     const currentTabKeys = new Set(newTabs.map(t => t.key))

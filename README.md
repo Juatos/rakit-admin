@@ -615,7 +615,7 @@ const detailItems = [
 | notification | NotificationProviderInst | 通知 |
 | drawer | DrawerInstance | 抽屉实例 |
 | modal | ModalInstance | 模态框实例 |
-| menus | MenuStore | 菜单管理 |
+| menus | menuStore | 菜单管理 |
 | tabs | TabStore | 标签页管理 |
 | crumbs | CrumbStore | 面包屑管理 |
 

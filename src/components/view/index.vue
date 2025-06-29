@@ -9,7 +9,6 @@ const props = withDefaults(defineProps<RkViewProps>(), {
 const contentClass = computed(() => {
   return `${props.viewClass} p-4`
 })
-console.log(contentClass.value, "content-class=")
 </script>
 
 <template>

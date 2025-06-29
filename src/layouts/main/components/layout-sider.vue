@@ -2,16 +2,15 @@
 import type { MenuOption } from "naive-ui"
 import { renderIcon, useRakit } from "$rk"
 import { defineComponent, onMounted, ref, watch } from "vue"
-import { manager } from "../extension"
 
 export default defineComponent({
   name: "LayoutSider",
   setup() {
-    const { store, router, menus } = useRakit()
+    const { store, router, menuStore, layoutStore } = useRakit()
 
     const menuRef = ref()
     // 活跃菜单直接交给store-menus管理
-    const isActive = computed(() => menus.isActive)
+    const isActive = computed(() => menuStore.isActive)
 
     onMounted(() => {
       const currentPath = router.currentRoute?.value?.path
@@ -45,10 +44,10 @@ export default defineComponent({
     }
 
     return {
-      menus,
+      menuStore,
+      layoutStore,
       menuRef,
       isActive,
-      manager,
       onMenuChange,
       renderMenuIcon,
     }
@@ -61,35 +60,34 @@ export default defineComponent({
     bordered
     native-scrollbar
     collapse-mode="width"
-    :collapsed="menus.isCollapsed"
+    :collapsed="menuStore.isCollapsed"
     :collapsed-width="60"
     :width="240"
     :inverted="false"
   >
     <n-layout-header bordered class="h-50px leading-50px" :inverted="false">
-      <template v-if="manager.hasReplacement('sider.logo')">
+      <template v-if="layoutStore.extensions?.SIDER_LOGO">
         <component
-          :is="comp"
-          v-for="comp in manager.getExtensions('sider.logo', 'replace')"
-          :key="comp.name"
+          :is="layoutStore.extensions?.SIDER_LOGO"
+          key="SIDER_LOGO"
         />
       </template>
       <template v-else>
         <div class="flex items-center px-4 h-full">
-          <rk-icon name="rk:logo-r" :size="menus.isCollapsed ? 32 : 24" />
-          <span v-show="!menus.isCollapsed" class="ml-2 text-16px font-bold">
+          <rk-icon name="rk:logo-r" :size="menuStore.isCollapsed ? 32 : 24" />
+          <span v-show="!menuStore.isCollapsed" class="ml-2 text-16px font-bold">
             RAKIT-ADMIN
           </span>
         </div>
       </template>
     </n-layout-header>
-    <n-scrollbar style="height: calc(100vh - 50px)">
+    <n-scrollbar style="height: calc(100vh - 50px)" :size="0">
       <n-menu
         ref="menuRef"
         v-model:value="isActive"
-        :options="menus.menuList as any"
-        :collapse="menus.isCollapsed"
-        :collapse-mode="menus.isCollapsed ? 'width' : 'height'"
+        :options="menuStore.menuList as any"
+        :collapse="menuStore.isCollapsed"
+        :collapse-mode="menuStore.isCollapsed ? 'width' : 'height'"
         :collapse-width="60"
         :icon-size="22"
         :collapsed-icon-size="26"

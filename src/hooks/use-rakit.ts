@@ -22,10 +22,11 @@ interface RakitContext {
   notification: NotificationProviderInst
   drawer: DrawerInstance | any
   modal: ModalInstance | any
-  // 模块化API
-  menus: ReturnType<typeof useAdminStore>["menus"]
-  tabs: ReturnType<typeof useAdminStore>["tabs"]
-  crumbs: ReturnType<typeof useAdminStore>["crumbs"]
+  // Store模块导出
+  menuStore: ReturnType<typeof useAdminStore>["menuStore"]
+  tabStore: ReturnType<typeof useAdminStore>["tabStore"]
+  curmbStore: ReturnType<typeof useAdminStore>["curmbStore"]
+  layoutStore: ReturnType<typeof useAdminStore>["layoutStore"]
 }
 
 export function useRakit(): RakitContext {
@@ -42,10 +43,11 @@ export function useRakit(): RakitContext {
     notification: window?.$notification,
     drawer: window?.$drawer,
     modal: window?.$modal,
-    // 模块化导出
-    menus: store.menus,
-    tabs: store.tabs,
-    crumbs: store.crumbs,
+    // Store模块导出
+    menuStore: store.menuStore,
+    tabStore: store.tabStore,
+    curmbStore: store.curmbStore,
+    layoutStore: store.layoutStore,
   }
 }
 

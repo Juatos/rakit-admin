@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import { manager } from "../extension"
+import { useRakit } from "$rk"
+
+const { layoutStore } = useRakit()
 </script>
 
 <template>
   <n-layout-footer bordered class="h-30px text-center leading-30px text-12px">
-    <template v-if="manager.hasReplacement('footer')">
+    <template v-if="layoutStore.extensions?.FOOTER">
       <component
-        :is="comp"
-        v-for="comp in manager.getExtensions('footer', 'replace')"
-        :key="comp.name"
+        :is="layoutStore.extensions?.FOOTER"
+        key="FOOTER"
       />
     </template>
     <template v-else>

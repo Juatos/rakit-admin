@@ -1,3 +1,5 @@
+import type { Component } from "vue"
+
 export interface MenuItem {
   title: string
   route: string
@@ -32,3 +34,6 @@ export interface TabItem {
   closable?: boolean
   count: number // 访问计数，用于判断是否首次访问
 }
+
+export type LayoutPoint = "SIDER_LOGO" | "HEADER_TOOLS" | "HEADER_PROFILE" | "FOOTER"
+export type LayoutExtension = Record<LayoutPoint, Component>

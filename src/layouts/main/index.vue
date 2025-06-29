@@ -22,12 +22,12 @@ provide("refreshCurrentRoute", () => {
 const { width } = useWindowSize()
 
 function initMenuCollapsed() {
-  const { menus } = useRakit()
-  if (width.value < 860 && menus.isAllowCollapsed) {
-    menus.setAllowCollapsed(false)
+  const { menuStore } = useRakit()
+  if (width.value < 860 && menuStore.isAllowCollapsed) {
+    menuStore.setAllowCollapsed(false)
   }
-  if (width.value >= 860 && !menus.isAllowCollapsed) {
-    menus.setAllowCollapsed(true)
+  if (width.value >= 860 && !menuStore.isAllowCollapsed) {
+    menuStore.setAllowCollapsed(true)
   }
 }
 

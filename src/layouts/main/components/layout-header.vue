@@ -2,9 +2,8 @@
 import { useRakit } from "$rk"
 import { useFullscreen } from "@vueuse/core"
 import { computed } from "vue"
-import { manager } from "../extension"
 
-const { store, theme, router, crumbs, menus } = useRakit()
+const { store, theme, router, curmbStore, menuStore, layoutStore } = useRakit()
 const {
   isDark,
   toggleTheme,
@@ -12,7 +11,7 @@ const {
 
 // 计算属性：是否显示面包屑
 const showCrumb = computed(() => {
-  return crumbs.model.length > 0 && menus.isAllowCollapsed
+  return curmbStore.model.length > 0 && menuStore.isAllowCollapsed
 })
 
 // 点击面包屑导航
@@ -34,21 +33,21 @@ const {
     <n-flex justify="space-between" align="center" class="h-full px-4">
       <n-flex align="center" :size="6">
         <div
-          v-if="menus.isAllowCollapsed"
+          v-if="menuStore.isAllowCollapsed"
           class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full"
-          @click="menus.toggleCollapsed()"
+          @click="menuStore.toggleCollapsed()"
         >
-          <rk-icon :name="menus.isCollapsed ? 'rk:menu-right' : 'rk:menu-left'" size="22" />
+          <rk-icon :name="menuStore.isCollapsed ? 'rk:menu-right' : 'rk:menu-left'" size="22" />
         </div>
         <n-divider v-if="showCrumb" vertical />
         <transition name="breadcrumb-slide" mode="out-in">
           <n-breadcrumb
             v-if="showCrumb"
-            :key="crumbs.model.map(item => item.title).join('-')"
+            :key="curmbStore.model.map(item => item.title).join('-')"
             class="text-12px!"
           >
             <n-breadcrumb-item
-              v-for="(item, index) in crumbs.model"
+              v-for="(item, index) in curmbStore.model"
               :key="`${item.title}-${item.path || index}`"
               :clickable="!!item.path"
               @click="handleBreadcrumbClick(item.path)"
@@ -64,85 +63,64 @@ const {
 
       <n-flex align="center" :size="12" class="h-full">
         <!-- 前置工具 -->
-        <template v-if="manager.hasBefore('header.tools')">
+        <template v-if="layoutStore.extensions?.HEADER_TOOLS">
           <component
-            :is="comp"
-            v-for="comp in manager.getExtensions('header.tools', 'before')"
-            :key="comp.name"
+            :is="layoutStore.extensions?.HEADER_TOOLS"
+            key="HEADER_TOOLS"
           />
         </template>
 
-        <!-- 默认或替换的工具 -->
-        <template v-if="manager.hasReplacement('header.tools')">
+        <n-tooltip placement="bottom" :delay="200">
+          <template #trigger>
+            <div
+              class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full "
+              @click="toggleTheme()"
+            >
+              <rk-icon :name="isDark ? 'rk-ani:moon' : 'rk-ani:sun'" size="20" />
+            </div>
+          </template>
+          <span>{{ isDark ? '切换亮色' : '切换暗色' }}</span>
+        </n-tooltip>
+
+        <n-tooltip placement="bottom" :delay="200">
+          <template #trigger>
+            <div
+              class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full"
+              @click.stop="toggleFullscreen()"
+            >
+              <rk-icon :name="isFullscreen ? 'rk:screen-exit' : 'rk:screen-full'" size="20" />
+            </div>
+          </template>
+          <span>{{ isFullscreen ? '退出全屏' : '切换全屏' }}</span>
+        </n-tooltip>
+
+        <!--          <n-tooltip placement="bottom" :delay="200"> -->
+        <!--            <template #trigger> -->
+        <!--              <div class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(&#45;&#45;hover-color)] rounded-full"> -->
+        <!--                <n-badge :value="12" processing dot> -->
+        <!--                  <rk-icon name="rk-ani:bell" size="20" /> -->
+        <!--                </n-badge> -->
+        <!--              </div> -->
+        <!--            </template> -->
+        <!--            <span>查看消息</span> -->
+        <!--          </n-tooltip> -->
+
+        <!--          <div class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(&#45;&#45;hover-color)] rounded-full"> -->
+        <!--            <rk-icon name="rk:setting" size="20" /> -->
+        <!--          </div> -->
+        <!--        </template> -->
+
+        <n-divider vertical />
+
+        <!-- 个人信息区域 -->
+        <template v-if="layoutStore.extensions?.HEADER_PROFILE">
           <component
-            :is="comp"
-            v-for="comp in manager.getExtensions('header.tools', 'replace')"
-            :key="comp.name"
+            :is="layoutStore.extensions?.HEADER_PROFILE"
+            key="HEADER_PROFILE"
           />
         </template>
         <template v-else>
-          <n-tooltip placement="bottom" :delay="200">
-            <template #trigger>
-              <div
-                class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full "
-                @click="toggleTheme()"
-              >
-                <rk-icon :name="isDark ? 'rk-ani:moon' : 'rk-ani:sun'" size="20" />
-              </div>
-            </template>
-            <span>{{ isDark ? '切换亮色' : '切换暗色' }}</span>
-          </n-tooltip>
-
-          <n-tooltip placement="bottom" :delay="200">
-            <template #trigger>
-              <div
-                class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(--hover-color)] rounded-full"
-                @click.stop="toggleFullscreen()"
-              >
-                <rk-icon :name="isFullscreen ? 'rk:screen-exit' : 'rk:screen-full'" size="20" />
-              </div>
-            </template>
-            <span>{{ isFullscreen ? '退出全屏' : '切换全屏' }}</span>
-          </n-tooltip>
-
-          <!--          <n-tooltip placement="bottom" :delay="200"> -->
-          <!--            <template #trigger> -->
-          <!--              <div class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(&#45;&#45;hover-color)] rounded-full"> -->
-          <!--                <n-badge :value="12" processing dot> -->
-          <!--                  <rk-icon name="rk-ani:bell" size="20" /> -->
-          <!--                </n-badge> -->
-          <!--              </div> -->
-          <!--            </template> -->
-          <!--            <span>查看消息</span> -->
-          <!--          </n-tooltip> -->
-
-          <!--          <div class="flex-center h-32px w-32px cursor-pointer hover:bg-[var(&#45;&#45;hover-color)] rounded-full"> -->
-          <!--            <rk-icon name="rk:setting" size="20" /> -->
-          <!--          </div> -->
-          <!--        </template> -->
-
-          <!-- 后置工具 -->
-          <template v-if="manager.hasAfter('header.tools')">
-            <component
-              :is="comp"
-              v-for="comp in manager.getExtensions('header.tools', 'after')"
-              :key="comp.name"
-            />
-          </template>
-
-          <n-divider vertical />
-
-          <!-- 个人信息区域 -->
-          <template v-if="manager.hasReplacement('header.profile')">
-            <component
-              :is="comp"
-              v-for="comp in manager.getExtensions('header.profile', 'replace')"
-              :key="comp.name"
-            />
-          </template>
-          <template v-else>
-            <div>Profile区域</div>
-          </template>
+          <div>HEADER_PROFILE区域</div>
         </template>
       </n-flex>
     </n-flex>

@@ -8,7 +8,7 @@ export function useCrumbs() {
   // 当前显示的面包屑
   const model = ref<CrumbItem[]>([{ title: "首页", path: homePath, icon: "rk:home" }])
 
-  // 面包屑映射缓存 (route => crumbs)
+  // 面包屑映射缓存 (route => curmbStore)
   const mapping = ref<Record<string, CrumbList>>({})
 
   // 设置面包屑

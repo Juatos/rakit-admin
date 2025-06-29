@@ -139,12 +139,12 @@ class Manager {
   createRouteGuard() {
     // 获取 loadingBar 实例
     const bar = useLoadingBar()
-    const { tabs } = useRakit()
+    const { tabStore } = useRakit()
 
     // 路由开始切换时
     this.router.beforeEach(async (to: any, from: any) => {
       // 查找目标路由对应的标签页
-      const targetTab = tabs.model.find(tab => tab.key === to.path)
+      const targetTab = tabStore.model.find(tab => tab.key === to.path)
 
       // 如果路由不在标签页中，或者是首次访问(count=1)，则显示加载进度条
       if (!targetTab || targetTab.count === 1) {

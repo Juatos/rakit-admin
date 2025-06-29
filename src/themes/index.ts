@@ -41,7 +41,7 @@ const defaultThemeDarkOverrides: AdminThemeOverrides = {
     primaryColorHover: "#289AE6FF",
     primaryColorPressed: "#218ED7FF",
     primaryColorSuppl: "#289AE6FF",
-    // primaryItemColorActive: "#2e3033",
+    primaryItemColorActive: "#2e3033",
 
     borderRadius: "6px",
     borderRadiusSmall: "4px",

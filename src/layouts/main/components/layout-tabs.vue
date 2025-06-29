@@ -2,7 +2,7 @@
 import type { DropdownOption } from "naive-ui"
 import { useRakit } from "$rk"
 
-const { store, router, homePath, tabs } = useRakit()
+const { store, router, homePath, tabStore } = useRakit()
 
 // 注入刷新方法
 const refreshCurrentRoute = inject<() => void>("refreshCurrentRoute")
@@ -14,7 +14,7 @@ const isPartialFullscreen = inject<Readonly<Ref<boolean>>>("isPartialFullscreen"
 const hoverIndex = ref<number>(-9)
 
 const hiddenDividerCollection = computed<number[]>(() => {
-  const activeIndex = tabs.model.findIndex(tab => tab.key === tabs.activeTab)
+  const activeIndex = tabStore.model.findIndex(tab => tab.key === tabStore.activeTab)
   const tabIndex = activeIndex === -1 ? -2 : activeIndex
   return [
     hoverIndex.value,
@@ -37,14 +37,14 @@ onMounted(() => {
 })
 
 // 监听 activeTab 的变化，实现标签居中
-watch(() => tabs.activeTab, () => {
+watch(() => tabStore.activeTab, () => {
   nextTick(() => {
-    if (tabs.activeTab === homePath) {
+    if (tabStore.activeTab === homePath) {
       centerHomeTab()
       return
     }
 
-    const activeTabEl = document.querySelector(`[data-key="${tabs.activeTab}"]`) as HTMLElement
+    const activeTabEl = document.querySelector(`[data-key="${tabStore.activeTab}"]`) as HTMLElement
     const scrollContainer = scrollableTabsRef.value
 
     if (activeTabEl && scrollContainer) {
@@ -102,7 +102,7 @@ const dropdownOptions = computed(() => {
   const options: DropdownOption[] = []
 
   // 如果当前不是首页，添加"关闭当前标签页"选项
-  if (tabs.activeTab !== homePath) {
+  if (tabStore.activeTab !== homePath) {
     options.push({
       label: "关闭当前标签页",
       key: "close-current",
@@ -126,14 +126,14 @@ const dropdownOptions = computed(() => {
 
 // 处理下拉菜单选择
 function handleDropdownSelect(key: string | number) {
-  const currentActiveTab = tabs.activeTab
+  const currentActiveTab = tabStore.activeTab
 
   switch (key) {
     case "close-current":
-      store.closeTab(tabs.activeTab)
+      store.closeTab(tabStore.activeTab)
       break
     case "close-others":
-      store.closeOtherTabs(tabs.activeTab)
+      store.closeOtherTabs(tabStore.activeTab)
       break
     case "close-all":
       store.closeAllTabs()
@@ -142,20 +142,20 @@ function handleDropdownSelect(key: string | number) {
 
   // 检查是否需要路由跳转
   nextTick(() => {
-    if (tabs.activeTab !== currentActiveTab) {
-      router.push(tabs.activeTab)
+    if (tabStore.activeTab !== currentActiveTab) {
+      router.push(tabStore.activeTab)
     }
   })
 }
 
 function handleCloseTab(key: string) {
-  const currentActiveTab = tabs.activeTab
+  const currentActiveTab = tabStore.activeTab
 
   if (key === currentActiveTab) {
     // 如果关闭当前标签，先切换到目标标签（不路由跳转）
     const { homePath } = useRakit()
-    const index = tabs.model.findIndex(item => item.key === key)
-    const newActiveKey = tabs.model[index - 1]?.key || homePath
+    const index = tabStore.model.findIndex(item => item.key === key)
+    const newActiveKey = tabStore.model[index - 1]?.key || homePath
 
     // 先切换activeTab状态，不路由跳转
     store.switchTab(newActiveKey)
@@ -191,17 +191,17 @@ function handleToggleFullscreen() {
         class="flex flex-1 overflow-x-auto transition-[scroll-left] duration-300 scrollbar-none pl-1"
       >
         <div
-          v-for="(tab, i) in tabs.model" :key="i" :data-key="tab.key"
+          v-for="(tab, i) in tabStore.model" :key="i" :data-key="tab.key"
           class="relative mt-3px h-[calc(100%-3px)] px-4px items-center select-none transition-width duration-300"
           :class="{
-            'z-20': tab.key === tabs.activeTab,
-            'hover:z-1': tab.key !== tabs.activeTab,
+            'z-20': tab.key === tabStore.activeTab,
+            'hover:z-1': tab.key !== tabStore.activeTab,
           }"
           @click="switchTab(tab.key)"
           @mouseenter="hoverIndex = i"
           @mouseleave="hoverIndex = -9"
         >
-          <div class="h-full w-full" :class="{ 'bg-[var(--primary-item-color-active)] rounded-t-10px': tab.key === tabs.activeTab }">
+          <div class="h-full w-full" :class="{ 'bg-[var(--primary-item-color-active)] rounded-t-10px': tab.key === tabStore.activeTab }">
             <n-divider
               v-if="!hiddenDividerCollection.includes(i)"
               class="w-2px! absolute! h-18px left-[-6px] top-7px z-99 bg-[var(--tab-color-divider)]!"
@@ -210,13 +210,13 @@ function handleToggleFullscreen() {
             <div
               class="h-30px px-2 gap-0 flex items-center justify-between rounded-10px min-w-85px"
               :class="[
-                tab.key === tabs.activeTab ? `bg-[var(--primary-item-color-active)] min-w-105px` : 'hover:bg-[var(--hover-color)]',
+                tab.key === tabStore.activeTab ? `bg-[var(--primary-item-color-active)] min-w-105px` : 'hover:bg-[var(--hover-color)]',
                 i === 0 ? 'text-center min-w-80px!' : '',
               ]"
             >
               <div
                 class="text-[#5f6368] truncate flex-1 text-13px pl-1"
-                :class="{ 'text-[var(--tab-color-active)]': tab.key === tabs.activeTab }"
+                :class="{ 'text-[var(--tab-color-active)]': tab.key === tabStore.activeTab }"
               >
                 {{ tab.title }}
               </div>
@@ -228,10 +228,10 @@ function handleToggleFullscreen() {
                 <rk-icon name="rk:xmark" size="14" class="xmark-icon" />
               </span>
             </div>
-            <svg v-if="tab.key === tabs.activeTab" width="10" height="10" class="absolute bottom-0 left-[-6px] color-[var(--primary-item-color-active)]">
+            <svg v-if="tab.key === tabStore.activeTab" width="10" height="10" class="absolute bottom-0 left-[-6px] color-[var(--primary-item-color-active)]">
               <path d="M 0 10 A 10 10 0 0 0 10 0 L 10 10 Z" fill="currentColor" />
             </svg>
-            <svg v-if="tab.key === tabs.activeTab" class="absolute bottom-0 right-[-6px] color-[var(--primary-item-color-active)]" width="10" height="10">
+            <svg v-if="tab.key === tabStore.activeTab" class="absolute bottom-0 right-[-6px] color-[var(--primary-item-color-active)]" width="10" height="10">
               <path d="M 0 0 A 10 10 0 0 0 10 10 L 0 10 Z" fill="currentColor" />
             </svg>
           </div>
