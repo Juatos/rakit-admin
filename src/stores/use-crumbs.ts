@@ -3,10 +3,10 @@ import { useRakitRouter } from "$rk/router"
 
 export type CrumbList = CrumbItem[]
 export function useCrumbs() {
-  const { defaultRoute } = useRakitRouter()
+  const { defaultRoute, defaultRouteTitle } = useRakitRouter()
 
   // 当前显示的面包屑
-  const model = ref<CrumbItem[]>([{ title: "首页", path: defaultRoute, icon: "rk:home" }])
+  const model = ref<CrumbItem[]>([{ title: defaultRouteTitle, path: defaultRoute, icon: "rk:home" }])
 
   // 面包屑映射缓存 (route => curmbStore)
   const mapping = ref<Record<string, CrumbList>>({})
@@ -41,7 +41,7 @@ export function useCrumbs() {
   function findMenuPath(path: string, menuList: MenuList): CrumbItem[] {
     // 如果是首页，直接返回首页面包屑
     if (path === defaultRoute) {
-      return [{ title: "首页", path: defaultRoute, icon: "rk:home" }]
+      return [{ title: defaultRouteTitle, path: defaultRoute, icon: "rk:home" }]
     }
 
     const result: CrumbItem[] = []

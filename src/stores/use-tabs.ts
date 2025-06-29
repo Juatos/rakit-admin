@@ -2,14 +2,14 @@ import type { TabItem } from "$rk"
 import { useRakitRouter } from "$rk/router"
 
 export function useTabs() {
-  const { defaultRoute } = useRakitRouter()
+  const { defaultRoute, defaultRouteTitle } = useRakitRouter()
 
   // 当前激活的标签页
   const activeTab = ref<string>(defaultRoute)
 
   // 标签页列表
   const model = ref<TabItem[]>([
-    { key: defaultRoute, title: "首页", closable: false, count: 1 },
+    { key: defaultRoute, title: defaultRouteTitle, closable: false, count: 1 },
   ])
 
   function setActive(value: string = "") {
