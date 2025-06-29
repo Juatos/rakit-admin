@@ -63,9 +63,9 @@ export default defineComponent({
     :collapsed="menuStore.isCollapsed"
     :collapsed-width="60"
     :width="240"
-    :inverted="false"
+    :inverted="layoutStore.sider.inverted"
   >
-    <n-layout-header bordered class="h-50px leading-50px" :inverted="false">
+    <n-layout-header bordered class="h-50px leading-50px" :inverted="layoutStore.sider.inverted">
       <template v-if="layoutStore.extensions?.SIDER_LOGO">
         <component
           :is="layoutStore.extensions?.SIDER_LOGO"
@@ -98,7 +98,7 @@ export default defineComponent({
         key-field="route"
         label-field="title"
         :on-update:value="onMenuChange"
-        :inverted="false"
+        :inverted="layoutStore.sider.inverted"
       />
     </n-scrollbar>
   </n-layout-sider>
