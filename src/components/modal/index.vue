@@ -7,6 +7,7 @@ export interface ModalProps {
   spin?: boolean
   footer?: boolean
   fullscreen?: boolean
+  fixHeigit?: boolean
 }
 
 export interface ModalFooterEmits {
@@ -19,6 +20,7 @@ const props = withDefaults(defineProps<ModalProps>(), {
   spin: false,
   footer: true,
   fullscreen: true,
+  fixHeigit: true,
 })
 
 const emits = defineEmits<ModalFooterEmits>()
@@ -116,7 +118,7 @@ defineExpose<ModalExpose>({
     </template>
     <template #default>
       <n-scrollbar trigger="none" class="max-h-80vh" content-class="scroll-content">
-        <n-spin :show="spin">
+        <n-spin :show="spin" content-class="h-full">
           <slot name="default" />
         </n-spin>
       </n-scrollbar>

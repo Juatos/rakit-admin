@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<DTableProps>(), {
   actions: () => [],
   extras: () => [],
   pagination: () => ({ size: 20 }),
+  inModal: false,
 })
 
 // 使用搜索钩子
@@ -143,7 +144,7 @@ defineExpose({
 </script>
 
 <template>
-  <n-flex vertical size="medium" class="w-full h-full overflow-hidden">
+  <n-flex vertical size="medium" class="w-full overflow-hidden" :class="[inModal ? 'h-72vh' : 'h-full']">
     <!-- 搜索区域 -->
     <search-alone
       v-if="queries?.length > 0 && !isSimple"
@@ -177,7 +178,6 @@ defineExpose({
 
       <!-- 表格 -->
       <n-data-table
-        :style="{ 'max-height': `${tableHeight}px` }"
         :max-height="maxHeight"
         :scroll-x="scrollX"
         :columns="displayColumns"

@@ -30,6 +30,13 @@ export async function rakitSetup(rakitConf: any) {
   await setupRouter(app, rakitConf.router)
   await setupLayout(rakitConf.layout)
 
+  // 前置事件
+  if (rakitConf?.prefixEvents) {
+    for (const event of rakitConf?.prefixEvents) {
+      await event?.()
+    }
+  }
+
   // 模拟延迟
   await sleep(100)
 
