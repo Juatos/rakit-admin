@@ -185,7 +185,7 @@ defineExpose({
         :data="dataSource"
         :pagination="fromatPagination"
         :size="tableDensity"
-        :row-key="(row: any) => row[props.rowSelection?.key ?? 'id']"
+        :row-key="(row: any) => row[(props?.rowSelection?.key ?? 'id') as string]"
         empty="暂无数据"
         remote
         @update:checked-row-keys="handleCheck"
