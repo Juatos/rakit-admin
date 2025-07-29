@@ -13,7 +13,6 @@ import Wrapper from "./wrapper.vue"
 const props = withDefaults(defineProps<DTableProps>(), {
   isSimple: false,
   showToolbar: true,
-  rowSelection: false,
   columns: () => [],
   queries: () => [],
   actions: () => [],
