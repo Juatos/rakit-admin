@@ -139,6 +139,7 @@ onMounted(async () => {
 
 // 暴露方法和数据
 defineExpose({
+  form,
   handleSearch,
 })
 </script>
