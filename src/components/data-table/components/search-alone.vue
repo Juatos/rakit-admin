@@ -7,6 +7,7 @@ import { computed, onMounted, ref } from "vue"
 interface Props {
   // 表单项定义
   queries: DTableQueries
+  defaultCollapse: boolean
 }
 
 const props = defineProps<Props>()
@@ -20,7 +21,7 @@ const emits = defineEmits<{
 const form = defineModel<DTableSearchForm>("form", { default: () => ({}) })
 
 // 用于控制搜索区域展开收起状态
-const isCollapsed = ref(true)
+const isCollapsed = ref<boolean>(props?.defaultCollapse !== false)
 
 function toggleCollapse() {
   isCollapsed.value = !isCollapsed.value

@@ -128,6 +128,7 @@ export type DTableQueries = DTableQuery[]
 export interface DTableProps {
   isSimple?: boolean
   inModal?: boolean
+  defaultCollapse?: boolean
   showToolbar?: boolean
   columns: DTableColumns
   queries?: DTableQueries

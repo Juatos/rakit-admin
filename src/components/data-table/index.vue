@@ -13,6 +13,8 @@ import Wrapper from "./wrapper.vue"
 const props = withDefaults(defineProps<DTableProps>(), {
   isSimple: false,
   showToolbar: true,
+  rowSelection: false,
+  defaultCollapse: true,
   columns: () => [],
   queries: () => [],
   actions: () => [],
@@ -150,6 +152,7 @@ defineExpose({
       v-if="queries?.length > 0 && !isSimple"
       v-model:form="form"
       :queries="queries"
+      :default-collapse="props?.defaultCollapse"
       @search="handleSearch"
     />
 
@@ -184,7 +187,7 @@ defineExpose({
         :data="dataSource"
         :pagination="fromatPagination"
         :size="tableDensity"
-        :row-key="(row: any) => row[(props?.rowSelection?.key ?? 'id') as string]"
+        :row-key="(row: any) => row[(props?.rowSelection !== false ? props?.rowSelection?.key : 'id') as string]"
         empty="暂无数据"
         remote
         @update:checked-row-keys="handleCheck"
