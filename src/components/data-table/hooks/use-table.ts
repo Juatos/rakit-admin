@@ -18,7 +18,10 @@ export function useTable(onSearch: DTableSearchFn, props?: DTableProps) {
   )
 
   // 获取数据的核心方法
-  async function handleSearch() {
+  async function handleSearch(pageReset = false) {
+    if (pageReset) {
+      current.value = 1
+    }
     spin.value = true
     try {
       // 根据 pagination 的配置决定是否传入分页参数

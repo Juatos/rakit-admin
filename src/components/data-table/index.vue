@@ -153,7 +153,7 @@ defineExpose({
       v-model:form="form"
       :queries="queries"
       :default-collapse="props?.defaultCollapse"
-      @search="handleSearch"
+      @search="() => handleSearch(true)"
     />
 
     <!-- 表格区域 -->
