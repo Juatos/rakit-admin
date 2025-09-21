@@ -16,4 +16,4 @@ export function useElement(showToolbar: boolean = true) {
     maxHeight,
     tableCntRef,
   }
-}Search
+}
