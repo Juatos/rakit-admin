@@ -37,7 +37,7 @@ export type DTableSearchReturn<T> = Promise<DTableSearchResult<T>>
 
 export interface DTableQuery {
   field: string
-  label: string
+  label: string | VNodeChild | (() => VNodeChild)
   component: "input" | "select" | "date" | "datetime" | "time" | "date-range" | "datetime-range" | "time-range" | "input-number" | Component | string
   options?: SelectOption[]
   placeholder?: string
@@ -59,7 +59,7 @@ export interface DTableQuery {
 
 // 操作栏按钮类型
 export interface DTableAction {
-  label: string
+  label: string | VNodeChild | (() => VNodeChild)
   type?: ButtonType
   icon?: string
   show?: boolean | ((row: any, idx?: number) => boolean)
@@ -69,7 +69,7 @@ export interface DTableAction {
 
 // 工具栏功能按钮类型
 export interface DTableExtra {
-  label: string
+  label: string | VNodeChild | (() => VNodeChild)
   type?: ButtonType
   icon?: string
   show?: boolean | (() => boolean)
@@ -79,7 +79,7 @@ export interface DTableExtra {
 
 // 工具栏批量操作按钮类型
 export interface DTableBatchExtra {
-  label: string
+  label: string | VNodeChild | (() => VNodeChild)
   type?: ButtonType
   icon?: string
   // 根据选中行数据判断是否禁用

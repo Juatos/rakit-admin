@@ -223,7 +223,6 @@ function handleReset() {
             <!-- 表单项 -->
             <template v-if="cell.type === 'form-item' && cell.query">
               <n-form-item
-                :label="cell.query.label"
                 class="search-item !mr-0"
                 :style="{
                   maxWidth: typeof cell.query.maxWidth === 'number'
@@ -231,6 +230,11 @@ function handleReset() {
                     : cell.query.maxWidth,
                 }"
               >
+                <template #label>
+                  <component v-if="typeof cell.query.label === 'function'" :is="cell.query.label" />
+                  <component v-else-if="typeof cell.query.label === 'object'" :is="() => cell.query.label" />
+                  <template v-else>{{ cell.query.label }}</template>
+                </template>
                 <!-- 根据组件类型渲染不同的表单控件 -->
                 <n-input
                   v-if="cell.query.component === 'input'"

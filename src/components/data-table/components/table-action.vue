@@ -42,9 +42,12 @@ function handleClick(action: DTableAction, row: any, index: number) {
       size="small"
       text
       :icon="String(action.icon)"
-      :title="action.label"
       :disabled="isDisabled(action, row, idx)"
       @click="handleClick(action, row, index)"
-    />
+    >
+      <component v-if="typeof action.label === 'function'" :is="action.label" />
+      <component v-else-if="typeof action.label === 'object'" :is="() => action.label" />
+      <template v-else>{{ action.label }}</template>
+    </rk-button>
   </n-flex>
 </template>

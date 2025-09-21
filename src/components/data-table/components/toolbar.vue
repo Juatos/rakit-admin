@@ -148,10 +148,13 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
             class="text-sm"
             :type="func.type || 'default'"
             :icon="func.icon || ''"
-            :title="func.label"
             :disabled="func.disabled ? func.disabled(rowKeys) : false"
             @click="() => func.handler(rowKeys)"
-          />
+          >
+            <component v-if="typeof func.label === 'function'" :is="func.label" />
+            <component v-else-if="typeof func.label === 'object'" :is="() => func.label" />
+            <template v-else>{{ func.label }}</template>
+          </rk-button>
         </template>
 
         <!-- 普通功能按钮 -->
@@ -161,10 +164,13 @@ function isBatchFunc(func: DTableExtra | DTableBatchExtra): func is DTableBatchE
             class="text-sm"
             :type="func.type || 'default'"
             :icon="func.icon || ''"
-            :title="func.label"
             :disabled="typeof func.disabled === 'function' ? func.disabled() : func.disabled"
             @click="func.handler"
-          />
+          >
+            <component v-if="typeof func.label === 'function'" :is="func.label" />
+            <component v-else-if="typeof func.label === 'object'" :is="() => func.label" />
+            <template v-else>{{ func.label }}</template>
+          </rk-button>
         </template>
       </template>
       <slot name="actions" />
