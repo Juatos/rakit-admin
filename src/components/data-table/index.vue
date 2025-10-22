@@ -167,6 +167,10 @@ function handleRowProps(row: any, index: number): DataTableRowProps | undefined 
     return {
       style: {
         backgroundColor: color,
+        // 覆盖 Naive UI 行内变量，确保单元格同步背景色
+        "--n-merged-td-color": color,
+        "--n-merged-td-color-hover": color,
+        "--n-merged-td-color-striped": color,
       },
     }
   }
