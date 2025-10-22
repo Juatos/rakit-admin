@@ -57,8 +57,8 @@ const originalColumnsWithoutAction = computed(() => {
 // 列配置
 const columnsConfig = ref<DTableColumn[]>([...originalColumnsWithoutAction.value])
 
-const rowBackgroundColumns = computed(() => {
-  const collectors: DTableColumn[] = []
+const rowBackgroundResolvers = computed(() => {
+  const resolvers: Array<(row: any, index: number) => string | undefined> = []
 
   const collect = (cols: DTableColumn[] = []) => {
     cols.forEach((col) => {
@@ -66,15 +66,21 @@ const rowBackgroundColumns = computed(() => {
         collect(col.children as DTableColumn[])
       }
 
-      if (col.rowBackgroundColor) {
-        collectors.push(col)
-      }
+      if (!col.rowBackgroundColor) { return }
+
+      resolvers.push((row: any, index: number) => {
+        const color = typeof col.rowBackgroundColor === "function"
+          ? col.rowBackgroundColor(row, index)
+          : col.rowBackgroundColor
+
+        return color || undefined
+      })
     })
   }
 
-  collect(formatColumns.value)
+  collect(props.columns as DTableColumn[])
 
-  return collectors
+  return resolvers
 })
 
 function formatColumnsRowSelection(columns: DataTableColumns): DataTableColumns {
@@ -154,13 +160,8 @@ function handleColumnSetting(columns: DTableColumn[]) {
 }
 
 function handleRowProps(row: any, index: number): DataTableRowProps | undefined {
-  for (const column of rowBackgroundColumns.value) {
-    if (!column.rowBackgroundColor) { continue }
-
-    const color = typeof column.rowBackgroundColor === "function"
-      ? column.rowBackgroundColor(row, index)
-      : column.rowBackgroundColor
-
+  for (const resolver of rowBackgroundResolvers.value) {
+    const color = resolver(row, index)
     if (!color) { continue }
 
     return {
