@@ -111,6 +111,11 @@ export interface DTableColumn extends Omit<DataTableColumn, "children"> {
   render?: ((row: any, index: number) => VNodeChild) | CustomRender
   props?: ColumnProps
   /**
+   * 行背景色
+   * 支持固定色值或按行动态设置
+   */
+  rowBackgroundColor?: string | ((row: any, index: number) => string | undefined)
+  /**
    * 列是否显示
    * 可以是布尔值或无参数函数
    */

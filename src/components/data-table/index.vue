@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { DTableColumn, DTableProps } from "$rk"
-import type { DataTableColumns, DataTableRowKey } from "naive-ui"
+import type { DataTableColumns, DataTableRowKey, DataTableRowProps } from "naive-ui"
 import type { TableDensityType } from "./consts"
 import SearchAlone from "./components/search-alone.vue"
 import Toolbar from "./components/toolbar.vue"
@@ -56,6 +56,26 @@ const originalColumnsWithoutAction = computed(() => {
 
 // 列配置
 const columnsConfig = ref<DTableColumn[]>([...originalColumnsWithoutAction.value])
+
+const rowBackgroundColumns = computed(() => {
+  const collectors: DTableColumn[] = []
+
+  const collect = (cols: DTableColumn[] = []) => {
+    cols.forEach((col) => {
+      if (col.children?.length) {
+        collect(col.children as DTableColumn[])
+      }
+
+      if (col.rowBackgroundColor) {
+        collectors.push(col)
+      }
+    })
+  }
+
+  collect(formatColumns.value)
+
+  return collectors
+})
 
 function formatColumnsRowSelection(columns: DataTableColumns): DataTableColumns {
   if (props.rowSelection !== false) {
@@ -133,6 +153,26 @@ function handleColumnSetting(columns: DTableColumn[]) {
   columnsConfig.value = columns
 }
 
+function handleRowProps(row: any, index: number): DataTableRowProps | undefined {
+  for (const column of rowBackgroundColumns.value) {
+    if (!column.rowBackgroundColor) { continue }
+
+    const color = typeof column.rowBackgroundColor === "function"
+      ? column.rowBackgroundColor(row, index)
+      : column.rowBackgroundColor
+
+    if (!color) { continue }
+
+    return {
+      style: {
+        backgroundColor: color,
+      },
+    }
+  }
+
+  return undefined
+}
+
 // 初始加载数据
 onMounted(async () => {
   await handleSearch()
@@ -188,6 +228,7 @@ defineExpose({
         :pagination="fromatPagination"
         :size="tableDensity"
         :row-key="(row: any) => row[(props?.rowSelection !== false ? props?.rowSelection?.key : 'id') as string]"
+        :row-props="handleRowProps"
         empty="暂无数据"
         remote
         @update:checked-row-keys="handleCheck"
